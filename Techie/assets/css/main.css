@@ -1,0 +1,1697 @@
+/**
+* Template Name: Techie
+* Template URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
+* Updated: Aug 07 2024 with Bootstrap v5.3.3
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
+/*--------------------------------------------------------------
+# Font & Color Variables
+# Help: https://bootstrapmade.com/color-system/
+--------------------------------------------------------------*/
+/* Fonts */
+:root {
+  --default-font: "Inter",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Quicksand",  sans-serif;
+  --nav-font: "Inter",  sans-serif;
+}
+
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root { 
+  --background-color:#D3CDE6;
+  --default-color: #000000; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #ffffff; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #ffffff; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #CDE3EB; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #6F599E; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+}
+
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+:root {
+  --nav-color: #000000 ;  /* The default color of the main navmenu links */
+  --nav-hover-color: #CDE3EB; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #CDE3EB; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #CDE3EB; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+
+/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+
+.light-background {
+
+  --surface-color: #CDE3EB;
+}
+
+.dark-background {
+
+  --default-color: #CDE3EB;
+  --heading-color: #CDE3EB;
+  --surface-color: #202020;
+  --contrast-color: #ffffff;
+}
+
+.accent-background {
+
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --accent-color: #ffffff;
+  --surface-color: #9EBBAE;
+  --contrast-color: #ffffff;
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+
+/* PHP Email Form Messages
+------------------------------*/
+.php-email-form .error-message {
+  display: none;
+  background: #df1529;
+  color: #ffffff;
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .sent-message {
+  display: none;
+  color: #ffffff;
+  background: #059652;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .loading {
+  display: none;
+  background: var(--surface-color);
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+}
+
+.php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid var(--accent-color);
+  border-top-color: var(--surface-color);
+  animation: php-email-form-loading 1s linear infinite;
+}
+
+@keyframes php-email-form-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.header {
+  --background-color: rgba(0, 0, 0, 0);
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 20px 0;
+  transition: all 0.5s;
+  z-index: 997;
+}
+
+.header .logo {
+  line-height: 1;
+}
+
+.header .logo img {
+  max-height: 36px;
+  margin-right: 8px;
+}
+
+.header .logo h1 {
+  font-size: 30px;
+  margin: 0;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.header .btn-getstarted,
+.header .btn-getstarted:focus {
+  color: var(--contrast-color);
+  font-size: 14px;
+  padding: 7px 25px;
+  margin: 0 0 0 30px;
+  border-radius: 4px;
+  transition: 0.3s;
+  border: 2px solid color-mix(in srgb, var(--contrast-color), transparent 50%);
+}
+
+.header .btn-getstarted:hover,
+.header .btn-getstarted:focus:hover {
+  color: var(--contrast-color);
+  border-color: var(--contrast-color);
+}
+
+@media (max-width: 1200px) {
+  .header .logo {
+    order: 1;
+  }
+
+  .header .btn-getstarted {
+    order: 2;
+    margin: 0 15px 0 0;
+    padding: 6px 15px;
+  }
+
+  .header .navmenu {
+    order: 3;
+  }
+}
+
+.scrolled .header {
+  box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Global Header on Scroll
+------------------------------*/
+.scrolled .header {
+  --background-color: rgba(77, 44, 169, 0.9);
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Desktop Navigation */
+@media (min-width: 1200px) {
+  .navmenu {
+    padding: 0;
+  }
+
+  .navmenu ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+  }
+
+  .navmenu li {
+    position: relative;
+  }
+
+  .navmenu>ul>li {
+    white-space: nowrap;
+    padding: 15px 14px;
+  }
+
+  .navmenu>ul>li:last-child {
+    padding-right: 0;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-color);
+    font-size: 15px;
+    padding: 0 2px;
+    font-family: var(--nav-font);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+    position: relative;
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    transition: 0.3s;
+  }
+
+  .navmenu>ul>li>a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background-color: var(--nav-hover-color);
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  .navmenu a:hover:before,
+  .navmenu li:hover>a:before,
+  .navmenu .active:before {
+    visibility: visible;
+    width: 100%;
+  }
+
+  .navmenu li:hover>a,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--nav-hover-color);
+  }
+
+  .navmenu .dropdown ul {
+    margin: 0;
+    padding: 10px 0;
+    background: var(--nav-dropdown-background-color);
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    left: 14px;
+    top: 130%;
+    opacity: 0;
+    transition: 0.3s;
+    border-radius: 4px;
+    z-index: 99;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .navmenu .dropdown ul li {
+    min-width: 200px;
+  }
+
+  .navmenu .dropdown ul a {
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: none;
+    color: var(--nav-dropdown-color);
+  }
+
+  .navmenu .dropdown ul a i {
+    font-size: 12px;
+  }
+
+  .navmenu .dropdown ul a:hover,
+  .navmenu .dropdown ul .active:hover,
+  .navmenu .dropdown ul li:hover>a {
+    color: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu .dropdown:hover>ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+
+  .navmenu .dropdown .dropdown ul {
+    top: 0;
+    left: -90%;
+    visibility: hidden;
+  }
+
+  .navmenu .dropdown .dropdown:hover>ul {
+    opacity: 1;
+    top: 0;
+    left: -100%;
+    visibility: visible;
+  }
+}
+
+/* Mobile Navigation */
+@media (max-width: 1199px) {
+  .mobile-nav-toggle {
+    color: var(--nav-color);
+    font-size: 28px;
+    line-height: 0;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .navmenu {
+    padding: 0;
+    z-index: 9997;
+  }
+
+  .navmenu ul {
+    display: none;
+    list-style: none;
+    position: absolute;
+    inset: 60px 20px 20px 20px;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 6px;
+    background-color: var(--nav-mobile-background-color);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    box-shadow: none;
+    overflow-y: auto;
+    transition: 0.3s;
+    z-index: 9998;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-dropdown-color);
+    padding: 10px 20px;
+    font-family: var(--nav-font);
+    font-size: 17px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.3s;
+    background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  }
+
+  .navmenu a i:hover,
+  .navmenu a:focus i:hover {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+  }
+
+  .navmenu a:hover,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu .active i,
+  .navmenu .active:focus i {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    transform: rotate(180deg);
+  }
+
+  .navmenu .dropdown ul {
+    position: static;
+    display: none;
+    z-index: 99;
+    padding: 10px 0;
+    margin: 10px 20px;
+    background-color: var(--nav-dropdown-background-color);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .navmenu .dropdown ul ul {
+    background-color: rgba(33, 37, 41, 0.1);
+  }
+
+  .navmenu .dropdown>.dropdown-active {
+    display: block;
+    background-color: rgba(33, 37, 41, 0.03);
+  }
+
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+
+  .mobile-nav-active .mobile-nav-toggle {
+    color: #fff;
+    position: absolute;
+    font-size: 32px;
+    top: 15px;
+    right: 15px;
+    margin-right: 0;
+    z-index: 9999;
+  }
+
+  .mobile-nav-active .navmenu {
+    position: fixed;
+    overflow: hidden;
+    inset: 0;
+    background: rgba(33, 37, 41, 0.8);
+    transition: 0.3s;
+  }
+
+  .mobile-nav-active .navmenu>ul {
+    display: block;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Footer
+--------------------------------------------------------------*/
+.footer {
+  color: var(--default-color);
+  background: linear-gradient(45deg, var(--background-color) 0%, color-mix(in srgb, var(--surface-color), transparent 10%) 100%), url("../img/footer-bg.jpg") center center no-repeat;
+  background-size: cover;
+  font-size: 14px;
+  padding-bottom: 50px;
+  position: relative;
+}
+
+.footer .footer-top {
+  padding-top: 50px;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.footer .footer-about .logo {
+  line-height: 1;
+  margin-bottom: 25px;
+}
+
+.footer .footer-about .logo img {
+  max-height: 40px;
+  margin-right: 6px;
+}
+
+.footer .footer-about .logo span {
+  color: var(--heading-color);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: var(--heading-font);
+}
+
+.footer .footer-about p {
+  font-size: 14px;
+  font-family: var(--heading-font);
+}
+
+.footer .social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 16px;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.footer .social-links a:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.footer h4 {
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer .footer-links {
+  margin-bottom: 30px;
+}
+
+.footer .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .footer-links ul i {
+  padding-right: 2px;
+  font-size: 12px;
+  line-height: 0;
+}
+
+.footer .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .footer-links ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .footer-links ul a:hover {
+  color: var(--accent-color);
+}
+
+.footer .footer-contact p {
+  margin-bottom: 5px;
+}
+
+.footer .copyright {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: color-mix(in srgb, var(--default-color), transparent 95%);
+}
+
+.footer .copyright p {
+  margin-bottom: 0;
+}
+
+.footer .credits {
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: var(--background-color);
+  transition: all 0.6s ease-out;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #ffffff;
+  border-color: var(--accent-color) transparent var(--accent-color) transparent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1.5s linear infinite;
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Scroll Top Button
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Page Titles & Breadcrumbs
+--------------------------------------------------------------*/
+.page-title {
+  color: var(--default-color);
+  background: linear-gradient(45deg, var(--background-color) 0%, color-mix(in srgb, var(--surface-color), transparent 10%) 100%), url("../img/page-title-bg.jpg") top center no-repeat;
+  background-size: cover;
+  padding: 160px 0 80px 0;
+  text-align: center;
+  position: relative;
+}
+
+.page-title h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.page-title .breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.page-title .breadcrumbs ol li+li {
+  padding-left: 10px;
+}
+
+.page-title .breadcrumbs ol li+li::before {
+  content: "/";
+  display: inline-block;
+  padding-right: 10px;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+}
+
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 60px 0;
+  scroll-margin-top: 92px;
+  overflow: clip;
+}
+
+@media (max-width: 1199px) {
+
+  section,
+  .section {
+    scroll-margin-top: 77px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  text-align: center;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.section-title h2:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: url("../img/hero-12.png") center;
+  background-size: contain;
+    margin-bottom: -40px;
+}
+
+.hero .hero-img {
+  position: absolute;   /* Saca la columna del flujo normal del documento */
+  bottom: 0;            /* ¡Pega el elemento al borde inferior de su padre (.hero)! */             /* Pega el elemento al borde DERECHO del .hero (debido a order-lg-2) */
+  left: 0;           /* Anula cualquier 'left' previo, si existiera */
+  width: 50%;           /* En desktop, col-lg-6 por defecto toma el 50% de ancho. */
+  max-width: none;      /* No aplicar un ancho máximo que lo restrinja en pantallas grandes */
+  height: auto;         /* Deja que la altura se ajuste proporcionalmente a la imagen */
+  padding-bottom: 0;    /* Sin padding extra por debajo en la versión de escritorio */
+  z-index: 10;          /* Asegura que esté por encima de otros elementos, si es necesario */
+}
+
+/* Las propiedades de la imagen misma (img-fluid, animated) ya funcionan correctamente en tu HTML */
+.hero .hero-img img {
+  max-width: 100%; /* Asegura que la imagen no sea más grande que su contenedor (.hero-img) */
+  height: auto;    /* Mantiene la relación de aspecto */
+  display: block;  /* Ayuda con el layout y previene espacios inesperados */
+}
+
+
+/* ========================================================= */
+/* MEDIA QUERIES PARA RESPONSIVIDAD (VERSIÓN MOBILE)         */
+/* Estos estilos SOBRESCRIBIRÁN los anteriores para pantallas pequeñas */
+/* ========================================================= */
+
+/* Dispositivos con ancho máximo de 991px (Ej. Tablets y Móviles - todo lo que no es lg y superior) */
+@media (max-width: 991px) {
+  .hero .hero-img {
+    /* Posicionamiento y tamaño para TABLETS y MÓVILES */
+    left: 50%;            /* Centra horizontalmente el cartel */
+    right: auto;          /* Desactiva el 'right: 0' de desktop */
+    transform: translateX(-50%); /* Ajuste para el centrado perfecto */
+    width: 100%;           /* Ocupa un 90% del ancho del hero en pantallas más pequeñas */
+    max-width: 380px;     /* Limita el tamaño máximo para que no sea gigante en tablets pequeñas */
+    padding-bottom: 45px; /* Un pequeño padding desde el borde inferior para el cartel en móviles */
+  }
+}
+
+.hero .animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@media (max-width: 400px) {
+  .hero {
+    background-image: url("../img/fotos-311.jpg");
+    background-position: center;
+    background-size: cover;
+    }
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+    
+.about{
+background: url("../img/abt-03.png") center center no-repeat;
+  background-size: cover;
+ width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+margin-bottom: 40px; 
+    }
+    
+ @media (max-width: 400px) {
+
+  /* Ajustar la columna de la imagen para mobile */
+  .about .col-lg-7.order-1.order-lg-2 {
+    justify-content: center;
+    margin-top: -100px;
+    width: 400px;
+     }
+     .about .col-lg-5.order-2.order-lg-1 h3{
+    margin-top: 30px;
+    text-align: center;
+     }
+  .about .col-lg-5.order-2.order-lg-1 p.fst-italic {
+    text-align: center; /* ¡Centra el texto interno en mobile! */
+    width: 75%; /* Puedes ajustar el ancho del BLOQUE del texto */
+    max-width: none; /* Anula el max-width de desktop si quieres que ocupe más espacio */
+    margin-left: 40px;
+    margin-right: 10px;
+        margin-top: 10px;
+  }
+}
+/*--------------------------------------------------------------
+
+# Services Section
+----------
+----------------------------------------------------*/
+.service-item {
+  display: flex !important; /* Mantiene el icono y el texto en la misma línea */
+  align-items: flex-start !important; /* Alinea el icono y el texto al inicio verticalmente */
+  margin-bottom: 40px; /* Margen entre cada 'service-item' completo */
+}
+
+/* 2. Estilos para el contenedor CÍRCULO (.icon) y su margen con el texto */
+/* Aplicado a ambas clases de columna para compatibilidad */
+.col-lg-4 .service-item .icon,
+.col-xl-4 .service-item .icon {
+  position: relative !important;   /* Necesario para posicionar la imagen ABSOLUTAMENTE dentro */
+  display: flex !important;        /* Para centrar la imagen internamente */
+  align-items: center !important;  /* Centra verticalmente la imagen */
+  justify-content: center !important; /* Centra horizontalmente la imagen */
+  width: 72px !important;          /* Tamaño fijo del círculo */
+  height: 72px !important;         /* Tamaño fijo del círculo */
+  margin-right: 25px !important;   /* ESTE ES EL MARGEN ENTRE EL ÍCONO Y EL TEXTO */
+  overflow: hidden !important;     /* Recorta cualquier parte de la imagen que se salga del círculo */
+  border-radius: 50% !important;   /* Para que el contenedor sea circular */
+  background-color: color-mix(in srgb, var(--accent-color), transparent 100%) !important; /* Color de fondo del círculo */
+  flex-shrink: 0 !important;       /* Evita que el icono se encoja si el texto es muy largo */
+}
+
+/* 3. Estilos para la IMAGEN (<img>) dentro del círculo, para que se vea bien */
+/* Asegúrate de que este selector es el que usas y que solo haya una imagen por .icon */
+.col-lg-4 .service-item .icon img,
+.col-xl-4 .service-item .icon img {
+  position: absolute !important;   /* Para centrarla perfectamente dentro del círculo */
+  top: 50% !important;             /* Centrado vertical */
+  left: 50% !important;            /* Centrado horizontal */
+  transform: translate(-50%, -50%) !important; /* Ajuste final para centrado perfecto */
+  width: 100% !important;          /* La imagen ocupa todo el ancho del círculo */
+  height: 100% !important;         /* La imagen ocupa todo el alto del círculo */
+  object-fit: contain !important;  
+  display: block !important;      
+}
+
+/* 4. Tamaño del Título (h4) */
+.service-item .title {
+  font-size: 20px; /* Tamaño de fuente para el título */
+  font-weight: bold; /* Peso de fuente para el título */
+  line-height: 1.2; /* Altura de línea para el título */
+  margin-bottom: 2px; /* Margen debajo del título */
+}
+
+/* 5. Tamaño del Texto (p.description) */
+.service-item .description {
+  font-size: 15px; /* Tamaño de fuente para el párrafo */
+  line-height: 1.5; /* Altura de línea para el párrafo */
+  color: #6c757d; /* Color de texto del párrafo */
+}
+
+/* ESTILOS DE TEXTO (Desktop) */
+/* ========================================================= */
+.services .service-item .title {
+  font-weight: 700;
+   margin-left: 20px;
+  font-size: 18px;
+  line-height: 1;
+  color: #ac6d6d;
+}
+
+
+.services .service-item .description {
+  font-size: 15px;
+  line-height: 1;
+    margin-left: 5px;
+  color: var(--default-color);
+}
+
+/* ========================================================= */
+/* ESTILOS ESPECÍFICOS PARA MOBILE (dentro de la media query) */
+/* Mantén este bloque como lo tienes, ya que dijiste que funciona bien */
+/* ========================================================= */
+
+@media (max-width: 991px) {
+  .services .service-item {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin-bottom: 25px !important;
+  }
+
+  .services .service-item .icon {
+    margin-right: 0 !important;
+    margin-bottom: 15px !important;
+  }
+
+  .services .service-item .title,
+  .services .service-item .description {
+    margin-left: 25px; !important;
+    margin-right: 25px;
+      line-height: 1.5;!important;
+    text-align: center !important;
+  }
+    .services .service-item .description{
+        margin-top: 8px
+    }
+    }
+/* ========================================================= */
+/* ESTILOS ESPECÍFICOS PARA MOBILE (dentro de la media query) */
+/* ========================================================= */
+
+/*--------------------------------------------------------------
+# Features Section
+--------------------------------------------------------------*/
+.features .features-image {
+  position: relative;
+  min-height: 400px; /* Esto parecería ser para una imagen de banner grande de la sección */
+}
+
+/* --- ESTILOS PARA CADA ITEM INDIVIDUAL (.features-item) --- */
+#features .features-item { /* Usamos #features para mayor especificidad */
+  display: flex;         /* Asegura el layout flexbox (horizontal) */
+  align-items: center;   /* ¡Clave para alinear verticalmente la imagen y el bloque de texto! */
+  margin: 30px;          /* Margen alrededor de cada features-item */
+   width: auto;    
+   height: auto;  
+}
+
+/* --- ESTILOS PARA LA IMAGEN ESPECÍFICA (.detalle) --- */
+#features .features-item .detalle { /* Usamos #features para mayor especificidad */
+  width: 38px;           /* Tamaño específico de la imagen de detalle */
+  height: auto;          /* Mantiene la proporción */
+  flex-shrink: 0;       
+  margin-right: 0;       /* Reinicia si el margin: 20px estaba creando problemas */
+  line-height: 0;        /* Esto no aplica a una imagen, puedes quitarlo */
+}
+
+#features .parrafo { /* Usamos #features para mayor especificidad */
+  flex-grow: 1;          /* Permite que este div ocupe el espacio restante */
+  margin-top: 10px;     
+}
+
+/* --- ESTILOS PARA EL TÍTULO (h4) dentro de .parrafo --- */
+#features .parrafo h4 { /* Usamos #features para mayor especificidad */
+  font-size: 20px;
+  font-weight: bold;     /* Corregido de 'px' a 'bold' o un valor numérico como 700 */
+  line-height: 1.2;      /* Ajusta el interlineado del título */
+  margin-bottom: 5px;  
+}
+
+/* --- ESTILOS PARA EL PÁRRAFO (p) dentro de .parrafo --- */
+#features .parrafo p { /* Usamos #features para mayor especificidad */
+  font-size: 15px;
+  line-height: 1.6;      /* Ajusta el interlineado del párrafo */
+  margin-top: 0;         /* Si quieres que no haya margen superior por defecto de p */
+  margin-left: 0;  
+ text-align: center;
+}
+
+ 
+
+@media (max-width: 400px) { /* Este breakpoint es común para "mobile" o "tablet pequeña" */
+    
+.features-item > div {
+    width: 900%;             /* ¡Esto hace que se expanda a todo el ancho disponible! */
+    text-align: center;     
+    padding-left: 10px;         /* Reinicia padding si viene de ps-lg-3 de Bootstrap */
+  }
+    .features-item .detalle {
+  width: 150%;
+    margin-left: 10px;
+align-items: center;
+}
+    
+    .features .features-item h4 {
+  font-size: 15px;
+  margin-left: -10px ;
+    align-items: center;
+}
+    
+ .features .features-item p {
+  font-size: 10px;
+     line-height: 18px;
+     margin-top: -5px;
+     margin-right: 50px;
+  align-items: center;
+}
+}
+    
+    
+/*--------------------------------------------------------------
+# Testimonials Section
+--------------------------------------------------------------*/
+    
+  /* --- ESTILOS DE ESCRITORIO (Desktop Styles) --- */
+
+/* Estilos generales para la sección de testimonios */
+#testimonials {
+  padding: 60px 0;
+  /* background-color: #f8f8fa; /* Tu color de fondo para la sección */
+}
+
+/* Estilos para el título de la sección */
+#testimonials .section-title h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+}
+#testimonials .section-title h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: var(--accent-color, #4CAF50);
+    margin: 0px auto 0;
+}
+
+/* Contenedores de Swiper */
+.testimonials .testimonials-carousel,
+.testimonials .testimonials-slider {
+  overflow: hidden;
+}
+.testimonials .swiper-wrapper {
+  height: auto;
+}
+
+/* Estilos para CADA SLIDE del carrusel */
+#testimonials .testimonial-item {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* --- AJUSTE CLAVE: Estilos para la IMAGEN PRINCIPAL (usando .testimonial-img) --- */
+#testimonials .testimonial-item .testimonial-img { /* ¡Cambiado a .testimonial-img! */
+  display: block;
+  width: 180px;            /* Tamaño de la imagen para el óvalo/círculo */
+  height: 180px;
+    margin-top: -10px;/* Para que sea un círculo con border-radius: 50% */
+    align-items: center
+}
+
+/* Estilos para el TÍTULO (h3) y SUBTÍTULO (h4) dentro del slide */
+#testimonials .testimonial-item h3 {
+  font-size: 23px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+    
+#testimonials .testimonial-item h4 {
+  font-size: 18px;
+  color: #ffffff;
+  padding-top: -10px;
+  margin-bottom: 0px;
+}
+
+/* Estilos para la PAGINACIÓN del carrusel (los puntos de navegación) */
+#testimonials .swiper-pagination {
+  margin-top: 20px; /* Bajar los puntos de navegación */
+  position: relative;
+}
+    
+#testimonials .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: var(--background-color);
+  opacity: 1;
+  border: 1px solid var(--accent-color);
+  padding-top: 0px;
+    align-items: center
+}
+#testimonials .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+/* --- ESTILOS MÓVILES (Mobile Styles) --- */
+@media (max-width: 400px) {
+
+  /* Ajustes para la IMAGEN PRINCIPAL en móvil */
+  #testimonials .testimonial-item .testimonial-img { /* ¡Cambiado a .testimonial-img! */
+    width: 100%;
+    height: 100%;
+      align-items: center;
+          margin
+  }
+
+  /* Ajustes para el TEXTO en móvil */
+  #testimonials .testimonial-item h3 {
+    font-size: 17px;
+      color:#7096a3;
+      text-align: center;
+  }
+  #testimonials .testimonial-item h4 {
+    font-size: 12px;
+      margin-left: 1px;
+      margin-bottom: 8px;
+      text-align: center;
+  }
+
+  /* Ajuste del margen de la paginación en móvil */
+  #testimonials .swiper-pagination {
+      align-items: center;
+      margin-left: -10px;
+  }
+}
+    
+/*-    
+# Portfolio Section
+--------------------------------------------------------------*/
+.portfolio .portfolio-filters {
+  padding: 0 0 20px 0;
+  margin: 0 auto;
+  list-style: none;
+  text-align: center;
+}
+
+.portfolio .portfolio-filters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 10px;
+  line-height: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.portfolio .portfolio-filters li:hover,
+.portfolio .portfolio-filters li.filter-active {
+  color: var(--accent-color);
+}
+
+.portfolio .portfolio-filters li:first-child {
+  margin-left: 0;
+}
+
+.portfolio .portfolio-filters li:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 575px) {
+  .portfolio .portfolio-filters li {
+    font-size: 14px;
+    margin: 0 5px;
+  }
+}
+
+.portfolio .portfolio-content {
+  background-color: var(--surface-color);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  overflow: hidden;
+}
+
+.portfolio .portfolio-content img {
+  transition: 0.3s;
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio .portfolio-content .portfolio-info {
+  background-color: var(--background-color);
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  padding: 25px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.portfolio .portfolio-content .portfolio-info h4 {
+  font-size: 18px;
+  font-weight: 600;
+  padding-right: 50px;
+}
+
+.portfolio .portfolio-content .portfolio-info h4 a {
+  color: var(--heading-color);
+  transition: 0.3s;
+}
+
+.portfolio .portfolio-content .portfolio-info h4 a:hover {
+  color: var(--accent-color);
+}
+
+.portfolio .portfolio-content .portfolio-info p {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  font-size: 14px;
+  margin-bottom: 0;
+  padding-right: 50px;
+}
+
+
+/*--------------------------------------------------------------
+# Pricing Section
+--------------------------------------------------------------*/
+.pricing .container{
+     width: 80%;
+    margin-right: 5px;
+    margin-left: 5px;
+    }
+    
+.pricing-item {
+  height: 100%;
+    margin:-5px;
+    display: flex;
+}
+
+@media (max-width: 400px) {
+  .pricing .box {
+    max-width: 100%;
+  }
+#pricing .section-title{
+    align-items: center;
+    margin-left: -1px;
+    margin-bottom: -60px;
+    }
+    .pricing .container{
+     width: 100%;
+    }
+}
+    
+/+--------------------------*/
+    
+/* --- ESTILOS PARA LA SECCIÓN DE VIDEO --- */
+/* Estilos por defecto (para desktop o pantallas grandes) */
+
+.ancho img-desk {
+    display: block; /* Muestra la imagen de desktop */
+    width: 2600px; /* Ajusta al ancho del contenedor */
+    height: 50%; /* Mantiene la proporción */
+    max-width: 100%; /* Asegura que no desborde */
+}
+    
+/*--------------------------------------------------------------
+# Team Section
+--------------------------------------------------------------*/
+
+    @media (max-width: 400px){
+    .team .team-member {
+  text-align: center;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.team .team-member .member-img {
+  position: relative;
+    margin-left: 70px;
+    margin-top: -30px;
+  overflow: hidden;
+    width: 60%;
+    align-self: center;
+}
+
+.team .team-member .social {
+ 
+  z-index: 2;
+}
+
+.team .team-member .social a {
+  
+  text-align: center;
+}
+
+
+
+.team .team-member .member-info h4 {
+  font-weight: 700;
+    margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 22px;
+}
+
+.team .team-member .member-info span {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  
+}
+
+.team .team-member .member-info p {
+  font-style: italic;
+  font-size: 14px;
+  padding-top: 15px;
+  line-height: 26px;
+  
+}
+
+.team .team-member:hover {
+  transform: scale(1.08);
+  
+}
+
+.team .team-member:hover .social {
+  right: 8px;
+  opacity: 1;
+}
+    }
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+.contact .info-item {
+  background: color-mix(in srgb, var(--default-color), transparent 96%);
+  padding: 30px;
+}
+
+.contact .info-item i {
+  font-size: 38px;
+  line-height: 0;
+  color: var(--accent-color);
+}
+
+.contact .info-item h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 20px 0 10px 0;
+}
+
+.contact .info-item p {
+  padding: 0;
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.contact .php-email-form {
+  background: color-mix(in srgb, var(--default-color), transparent 96%);
+  padding: 30px;
+  height: 100%;
+}
+
+.contact .php-email-form input[type=text],
+.contact .php-email-form input[type=email],
+.contact .php-email-form textarea {
+  font-size: 14px;
+  padding: 10px 15px;
+  box-shadow: none;
+  border-radius: 0;
+  color: var(--default-color);
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.contact .php-email-form input[type=text]:focus,
+.contact .php-email-form input[type=email]:focus,
+.contact .php-email-form textarea:focus {
+  border-color: var(--accent-color);
+}
+
+.contact .php-email-form input[type=text]::placeholder,
+.contact .php-email-form input[type=email]::placeholder,
+.contact .php-email-form textarea::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+.contact .php-email-form button[type=submit] {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border: 0;
+  padding: 10px 30px;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+.contact .php-email-form button[type=submit]:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+/*--------------------------------------------------------------
+# Portfolio Details Section
+--------------------------------------------------------------*/
+.portfolio-details .portfolio-details-slider img {
+  width: 100%;
+}
+
+.portfolio-details .swiper-wrapper {
+  height: auto;
+}
+
+.portfolio-details .swiper-button-prev,
+.portfolio-details .swiper-button-next {
+  width: 48px;
+  height: 48px;
+}
+
+.portfolio-details .swiper-button-prev:after,
+.portfolio-details .swiper-button-next:after {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.15);
+  font-size: 24px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.portfolio-details .swiper-button-prev:hover:after,
+.portfolio-details .swiper-button-next:hover:after {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 575px) {
+
+  .portfolio-details .swiper-button-prev,
+  .portfolio-details .swiper-button-next {
+    display: none;
+  }
+}
+
+.portfolio-details .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.portfolio-details .swiper-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+  opacity: 1;
+}
+
+.portfolio-details .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+.portfolio-details .portfolio-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.portfolio-details .portfolio-info h3:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+  left: 0;
+  bottom: 0;
+}
+
+.portfolio-details .portfolio-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.portfolio-details .portfolio-info ul li {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+}
+
+.portfolio-details .portfolio-info ul strong {
+  text-transform: uppercase;
+  font-weight: 400;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 14px;
+}
+
+.portfolio-details .portfolio-info .btn-visit {
+  padding: 8px 40px;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.portfolio-details .portfolio-info .btn-visit:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+.portfolio-details .portfolio-description h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.portfolio-details .portfolio-description p {
+  padding: 0;
+}
+
+.portfolio-details .portfolio-description .testimonial-item {
+  padding: 30px 30px 0 30px;
+  position: relative;
+  background: color-mix(in srgb, var(--default-color), transparent 97%);
+  margin-bottom: 50px;
+}
+
+.portfolio-details .portfolio-description .testimonial-item .testimonial-img {
+  width: 90px;
+  border-radius: 50px;
+  border: 6px solid var(--background-color);
+  float: left;
+  margin: 0 10px 0 0;
+}
+
+.portfolio-details .portfolio-description .testimonial-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+  padding-top: 20px;
+}
+
+.portfolio-details .portfolio-description .testimonial-item h4 {
+  font-size: 14px;
+  color: #6c757d;
+  margin: 0;
+}
+
+.portfolio-details .portfolio-description .testimonial-item .quote-icon-left,
+.portfolio-details .portfolio-description .testimonial-item .quote-icon-right {
+  color: color-mix(in srgb, var(--accent-color), transparent 50%);
+  font-size: 26px;
+  line-height: 0;
+}
+
+.portfolio-details .portfolio-description .testimonial-item .quote-icon-left {
+  display: inline-block;
+  left: -5px;
+  position: relative;
+}
+
+.portfolio-details .portfolio-description .testimonial-item .quote-icon-right {
+  display: inline-block;
+  right: -5px;
+  position: relative;
+  top: 10px;
+  transform: scale(-1, -1);
+}
+
+.portfolio-details .portfolio-description .testimonial-item p {
+  font-style: italic;
+  margin: 0 0 15px 0 0 0;
+  padding: 0;
+}
+
+/*--------------------------------------------------------------
+# Service Details Section
+--------------------------------------------------------------*/
+.service-details .services-list {
+  background-color: var(--surface-color);
+  padding: 10px 30px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  margin-bottom: 20px;
+}
+
+.service-details .services-list a {
+  display: block;
+  line-height: 1;
+  padding: 8px 0 8px 15px;
+  border-left: 3px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  margin: 20px 0;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  transition: 0.3s;
+}
+
+.service-details .services-list a.active {
+  color: var(--heading-color);
+  font-weight: 700;
+  border-color: var(--accent-color);
+}
+
+.service-details .services-list a:hover {
+  border-color: var(--accent-color);
+}
+
+.service-details .services-img {
+  margin-bottom: 20px;
+}
+
+.service-details h3 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.service-details h4 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.service-details p {
+  font-size: 15px;
+}
+
+.service-details ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.service-details ul li {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.service-details ul i {
+  font-size: 20px;
+  margin-right: 8px;
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Starter Section Section
+--------------------------------------------------------------*/
+.starter-section {
+  /* Add your styles here */
+}
