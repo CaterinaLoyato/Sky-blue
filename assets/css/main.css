@@ -19,43 +19,43 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color:#D3CDE6;
+  --background-color:#f1f1f1;
   --default-color: #000000; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #ffffff; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #ffffff; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #CDE3EB; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #6F599E; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --heading-color: #8B77B2; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #8B77B2; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #9EBBAE; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
   --nav-color: #000000 ;  /* The default color of the main navmenu links */
-  --nav-hover-color: #CDE3EB; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-hover-color: #9EBBAE; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #CDE3EB; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #CDE3EB; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-dropdown-color: #9EBBAE; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #9EBBAE; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
 
-  --surface-color: #CDE3EB;
+  --surface-color: #9EBBAE;
 }
 
 .dark-background {
 
-  --default-color: #CDE3EB;
-  --heading-color: #CDE3EB;
+  --default-color: #9EBBAE;
+  --heading-color: #9EBBAE;
   --surface-color: #202020;
-  --contrast-color: #ffffff;
+  --contrast-color: #9EBBAE;
 }
 
 .accent-background {
 
-  --default-color: #ffffff;
-  --heading-color: #ffffff;
+  --default-color: #000000;
+  --heading-color: #9F90C1;
   --accent-color: #ffffff;
   --surface-color: #9EBBAE;
   --contrast-color: #ffffff;
@@ -156,7 +156,7 @@ h6 {
   --default-color: #ffffff;
   --heading-color: #ffffff;
   color: var(--default-color);
-  background-color: var(--background-color);
+  background-color: ;
   padding: 20px 0;
   transition: all 0.5s;
   z-index: 997;
@@ -167,8 +167,8 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 36px;
-  margin-right: 8px;
+  max-height: 70px;
+  margin-right: 5px;
 }
 
 .header .logo h1 {
@@ -519,7 +519,7 @@ h6 {
 }
 
 .footer .footer-about p {
-  font-size: 14px;
+  font-size: 18px;
   font-family: var(--heading-font);
 }
 
@@ -592,7 +592,7 @@ h6 {
 .footer .copyright {
   padding-top: 25px;
   padding-bottom: 25px;
-  background-color: color-mix(in srgb, var(--default-color), transparent 95%);
+  background-color: color-mix(in srgb, var(--default-color), transparent %);
 }
 
 .footer .copyright p {
@@ -784,8 +784,8 @@ section,
   position: relative;
   display: flex;
   align-items: center;
-  background: url("../img/hero-12.png") center;
-  background-size: contain;
+  background: url("../img/fondu_Mesa%20de%20trabajo%2011-11.png") center;
+  background-size: cover;
     margin-bottom: -40px;
 }
 
@@ -806,6 +806,7 @@ section,
   height: auto;    /* Mantiene la relación de aspecto */
   display: block;  /* Ayuda con el layout y previene espacios inesperados */
 }
+
 
 
 /* ========================================================= */
@@ -830,9 +831,9 @@ section,
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 360px) {
   .hero {
-    background-image: url("../img/fotos-311.jpg");
+    background-image: url("../img/R.jpeg");
     background-position: center;
     background-size: cover;
     }
@@ -849,199 +850,257 @@ section,
 
 /*--------------------------------------------------------------
 # About Section
---------------------------------------------------------------*/
-    
-.about{
-background: url("../img/abt-03.png") center center no-repeat;
-  background-size: cover;
- width: 100%;
+--------------------------------------------------------------*/   
+/* --- Sección Intro --- */
+
+  .intro {
+  width: 100%;
   min-height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
-margin-bottom: 40px; 
+  background: url("../img/abt-03.png") center;
+  background-size: cover;
+    margin-bottom: -40px;
+}  
+@media (max-width: 360px) {
+    /* Estilos generales para el contenedor de la sección */
+    #intro .container {
+        padding: 20px; /* Un poco de padding para que no se pegue a los bordes */
     }
-    
- @media (max-width: 400px) {
 
-  /* Ajustar la columna de la imagen para mobile */
-  .about .col-lg-7.order-1.order-lg-2 {
-    justify-content: center;
-    margin-top: -100px;
-    width: 400px;
-     }
-     .about .col-lg-5.order-2.order-lg-1 h3{
-    margin-top: 30px;
-    text-align: center;
-     }
-  .about .col-lg-5.order-2.order-lg-1 p.fst-italic {
-    text-align: center; /* ¡Centra el texto interno en mobile! */
-    width: 75%; /* Puedes ajustar el ancho del BLOQUE del texto */
-    max-width: none; /* Anula el max-width de desktop si quieres que ocupe más espacio */
-    margin-left: 40px;
-    margin-right: 10px;
-        margin-top: 10px;
-  }
+    /* Ajustes para las columnas en pantallas pequeñas */
+    #intro .row {
+        flex-direction: column; /* Apila las columnas verticalmente */
+        text-align: center; /* Centra el texto */
+    }
+
+    #intro .col-lg-6 {
+        width: 100%; /* Las columnas ocupan todo el ancho disponible */
+    }
+
+    /* Orden de los elementos: imagen primero, luego texto */
+    #intro .order-1.order-lg-2 { /* Esta es la columna de la imagen */
+        order: 1;
+        margin-bottom: 20px; /* Espacio entre la imagen y el texto */
+    }
+
+    #intro .order-2.order-lg-1 { /* Esta es la columna del texto */
+        order: 2;
+    }
+
+    /* Estilos para el título principal */
+    #intro h1 {
+        font-size: 28px; /* Reduce el tamaño de la fuente para que quepa mejor */
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    /* Estilos para el párrafo descriptivo */
+    #intro p {
+        font-size: 16px; /* Ajusta el tamaño del párrafo */
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    /* Asegura que la imagen sea responsiva y no se desborde */
+    #intro .hero-img img {
+        width: 100%;
+        height: auto;
+        max-width: 280px; /* Limita el ancho máximo de la imagen si es muy grande */
+        display: block; /* Para centrar la imagen */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Si hay botones o elementos dentro de .d-flex, asegúrate de que se centren */
+    #intro .d-flex {
+        justify-content: center; /* Centra el contenido si lo hay */
+    }
 }
-/*--------------------------------------------------------------
-
+    
+/*--------------------------------------------------------------*/*--------/*
 # Services Section
 ----------
 ----------------------------------------------------*/
-.service-item {
-  display: flex !important; /* Mantiene el icono y el texto en la misma línea */
-  align-items: flex-start !important; /* Alinea el icono y el texto al inicio verticalmente */
-  margin-bottom: 40px; /* Margen entre cada 'service-item' completo */
+/* Contenedor general */
+/* --- ESTILOS GENERALES (PARA ESCRITORIO) --- */
+/* --- ESTILOS GENERALES (POR DEFECTO PARA ESCRITORIO Y TABLETS) --- */
+
+/* --- ESTILOS GENERALES (POR DEFECTO PARA ESCRITORIO Y TABLETS) --- */
+
+.icono-section {
+    padding: 60px 0;
+    background-color: var(--background-color, #f8f8f8);
 }
 
-/* 2. Estilos para el contenedor CÍRCULO (.icon) y su margen con el texto */
-/* Aplicado a ambas clases de columna para compatibilidad */
-.col-lg-4 .service-item .icon,
-.col-xl-4 .service-item .icon {
-  position: relative !important;   /* Necesario para posicionar la imagen ABSOLUTAMENTE dentro */
-  display: flex !important;        /* Para centrar la imagen internamente */
-  align-items: center !important;  /* Centra verticalmente la imagen */
-  justify-content: center !important; /* Centra horizontalmente la imagen */
-  width: 72px !important;          /* Tamaño fijo del círculo */
-  height: 72px !important;         /* Tamaño fijo del círculo */
-  margin-right: 25px !important;   /* ESTE ES EL MARGEN ENTRE EL ÍCONO Y EL TEXTO */
-  overflow: hidden !important;     /* Recorta cualquier parte de la imagen que se salga del círculo */
-  border-radius: 50% !important;   /* Para que el contenedor sea circular */
-  background-color: color-mix(in srgb, var(--accent-color), transparent 100%) !important; /* Color de fondo del círculo */
-  flex-shrink: 0 !important;       /* Evita que el icono se encoja si el texto es muy largo */
+.icono-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    font-size: 2.1em;
+    color: var(--heading-color, #333);
 }
 
-/* 3. Estilos para la IMAGEN (<img>) dentro del círculo, para que se vea bien */
-/* Asegúrate de que este selector es el que usas y que solo haya una imagen por .icon */
-.col-lg-4 .service-item .icon img,
-.col-xl-4 .service-item .icon img {
-  position: absolute !important;   /* Para centrarla perfectamente dentro del círculo */
-  top: 50% !important;             /* Centrado vertical */
-  left: 50% !important;            /* Centrado horizontal */
-  transform: translate(-50%, -50%) !important; /* Ajuste final para centrado perfecto */
-  width: 100% !important;          /* La imagen ocupa todo el ancho del círculo */
-  height: 100% !important;         /* La imagen ocupa todo el alto del círculo */
-  object-fit: contain !important;  
-  display: block !important;      
+.icono-scroll {
+    display: grid !important; /* Añadido !important */
+    grid-template-columns: repeat(3, 1fr) !important; /* Añadido !important */
+    gap: 30px !important; /* Añadido !important */
+    justify-content: center !important;
+    overflow-x: visible !important;
+    scroll-snap-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-/* 4. Tamaño del Título (h4) */
-.service-item .title {
-  font-size: 20px; /* Tamaño de fuente para el título */
-  font-weight: bold; /* Peso de fuente para el título */
-  line-height: 1.2; /* Altura de línea para el título */
-  margin-bottom: 2px; /* Margen debajo del título */
-}
-
-/* 5. Tamaño del Texto (p.description) */
-.service-item .description {
-  font-size: 15px; /* Tamaño de fuente para el párrafo */
-  line-height: 1.5; /* Altura de línea para el párrafo */
-  color: #6c757d; /* Color de texto del párrafo */
-}
-
-/* ESTILOS DE TEXTO (Desktop) */
-/* ========================================================= */
-.services .service-item .title {
-  font-weight: 700;
-   margin-left: 20px;
-  font-size: 18px;
-  line-height: 1;
-  color: #ac6d6d;
-}
-
-
-.services .service-item .description {
-  font-size: 15px;
-  line-height: 1;
-    margin-left: 5px;
-  color: var(--default-color);
-}
-
-/* ========================================================= */
-/* ESTILOS ESPECÍFICOS PARA MOBILE (dentro de la media query) */
-/* Mantén este bloque como lo tienes, ya que dijiste que funciona bien */
-/* ========================================================= */
-
-@media (max-width: 991px) {
-  .services .service-item {
+.icono {
+    display: flex !important; /* Asegurar que los items internos se comporten como flex */
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    margin-bottom: 25px !important;
-  }
+    padding: 20px !important;
+    background-color: #fff !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+}
 
-  .services .service-item .icon {
-    margin-right: 0 !important;
+.icono img {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: contain !important;
     margin-bottom: 15px !important;
-  }
+}
 
-  .services .service-item .title,
-  .services .service-item .description {
-    margin-left: 25px; !important;
-    margin-right: 25px;
-      line-height: 1.5;!important;
-    text-align: center !important;
-  }
-    .services .service-item .description{
-        margin-top: 8px
+.icono p {
+    margin-bottom: 5px !important;
+    font-size: 1em !important;
+    line-height: 1.4 !important;
+    color: #555 !important;
+}
+
+.icono p strong {
+    font-size: 1.1em !important;
+    color: #333 !important;
+    margin-bottom: 5px !important;
+    display: block !important;
+}
+
+.icono-dots {
+    display: none !important; /* Ocultar los puntos de navegación en escritorio */
+}
+
+
+/* --- ESTILOS ESPECÍFICOS PARA EL CARRUSEL EN MOBILE --- */
+@media (max-width: 768px) {
+    .icono-scroll {
+        display: flex !important; /* Anula el grid en móvil */
+        flex-wrap: nowrap !important;
+        overflow-x: scroll !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 0 20px !important;
+        gap: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        scroll-behavior: smooth !important;
     }
+
+    .icono {
+        flex-shrink: 0 !important;
+        width: 90vw !important;
+        scroll-snap-align: center !important;
+        margin-right: 20px !important;
+        height: auto !important;
+        padding: 15px !important;
     }
-/* ========================================================= */
-/* ESTILOS ESPECÍFICOS PARA MOBILE (dentro de la media query) */
-/* ========================================================= */
+
+    .icono img {
+        width: 70px !important;
+        height: 70px !important;
+        object-fit: contain !important;
+        margin-bottom: 15px !important;
+    }
+
+    .icono:last-child {
+        margin-right: calc(50vw - (90vw / 2) + 20px) !important;
+    }
+
+    .icono-dots {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        margin-top: 25px !important;
+    }
+
+    .icono-dots .dot {
+        width: 10px !important;
+        height: 10px !important;
+        background-color: rgba(0, 0, 0, 0.2) !important;
+        border-radius: 50% !important;
+        cursor: pointer !important;
+        transition: background-color 0.3s ease !important;
+    }
+
+    .icono-dots .dot.active {
+        background-color: var(--accent-color, #007bff) !important;
+    }
+}
+/* --- ESTILOS GENERALES (PARA ESCRITORIO Y BASE) --- */
+
 
 /*--------------------------------------------------------------
 # Features Section
---------------------------------------------------------------*/
-.features .features-image {
+    --------------------------------------------------------------*/    
+    @media (max width 360px){
+    .features .features-image {
   position: relative;
-  min-height: 400px; /* Esto parecería ser para una imagen de banner grande de la sección */
+  min-height: 200px;
+    align-content: center;
+   margin-right: 50px; /* Esto parecería ser para una imagen de banner grande de la sección */
 }
 
 /* --- ESTILOS PARA CADA ITEM INDIVIDUAL (.features-item) --- */
 #features .features-item { /* Usamos #features para mayor especificidad */
   display: flex;         /* Asegura el layout flexbox (horizontal) */
   align-items: center;   /* ¡Clave para alinear verticalmente la imagen y el bloque de texto! */
-  margin: 30px;          /* Margen alrededor de cada features-item */
-   width: auto;    
-   height: auto;  
+  margin: 20px;          /* Margen alrededor de cada features-item */
+   width: 50px;    
+   height: 50px;  
 }
 
 /* --- ESTILOS PARA LA IMAGEN ESPECÍFICA (.detalle) --- */
 #features .features-item .detalle { /* Usamos #features para mayor especificidad */
-  width: 38px;           /* Tamaño específico de la imagen de detalle */
+  width: px;           /* Tamaño específico de la imagen de detalle */
   height: auto;          /* Mantiene la proporción */
   flex-shrink: 0;       
-  margin-right: 0;       /* Reinicia si el margin: 20px estaba creando problemas */
+  margin-right: ;       /* Reinicia si el margin: 20px estaba creando problemas */
   line-height: 0;        /* Esto no aplica a una imagen, puedes quitarlo */
 }
 
 #features .parrafo { /* Usamos #features para mayor especificidad */
   flex-grow: 1;          /* Permite que este div ocupe el espacio restante */
-  margin-top: 10px;     
+  margin-top: 0px;
+
+    text-align: center;
 }
 
-/* --- ESTILOS PARA EL TÍTULO (h4) dentro de .parrafo --- */
-#features .parrafo h4 { /* Usamos #features para mayor especificidad */
-  font-size: 20px;
-  font-weight: bold;     /* Corregido de 'px' a 'bold' o un valor numérico como 700 */
-  line-height: 1.2;      /* Ajusta el interlineado del título */
-  margin-bottom: 5px;  
-}
 
 /* --- ESTILOS PARA EL PÁRRAFO (p) dentro de .parrafo --- */
-#features .parrafo p { /* Usamos #features para mayor especificidad */
-  font-size: 15px;
-  line-height: 1.6;      /* Ajusta el interlineado del párrafo */
-  margin-top: 0;         /* Si quieres que no haya margen superior por defecto de p */
-  margin-left: 0;  
+#features .parrafo h4{ /* Usamos #features para mayor especificidad */
+  font-size: 12px;
+  line-height: 14px;      /* Ajusta el interlineado del párrafo */
+ text-align: center;
+    margin-left: 0px;
+}
+    
+ #features .parrafo p{ /* Usamos #features para mayor especificidad */
+  font-size: 10px;
+  line-height: 10px;      /* Ajusta el interlineado del párrafo */
  text-align: center;
 }
-
- 
-
-@media (max-width: 400px) { /* Este breakpoint es común para "mobile" o "tablet pequeña" */
+ /* Este breakpoint es común para "mobile" o "tablet pequeña" */
     
 .features-item > div {
     width: 900%;             /* ¡Esto hace que se expanda a todo el ancho disponible! */
@@ -1049,26 +1108,14 @@ margin-bottom: 40px;
     padding-left: 10px;         /* Reinicia padding si viene de ps-lg-3 de Bootstrap */
   }
     .features-item .detalle {
-  width: 150%;
+  width: 100%;
     margin-left: 10px;
 align-items: center;
 }
     
-    .features .features-item h4 {
-  font-size: 15px;
-  margin-left: -10px ;
-    align-items: center;
-}
-    
- .features .features-item p {
-  font-size: 10px;
-     line-height: 18px;
-     margin-top: -5px;
-     margin-right: 50px;
-  align-items: center;
-}
-}
-    
+ 
+
+    }
     
 /*--------------------------------------------------------------
 # Testimonials Section
@@ -1077,201 +1124,199 @@ align-items: center;
   /* --- ESTILOS DE ESCRITORIO (Desktop Styles) --- */
 
 /* Estilos generales para la sección de testimonios */
-#testimonials {
+/* --- ESTILOS GENERALES PARA LA SECCIÓN #info (se aplican por defecto) --- */
+#info {
   padding: 60px 0;
-  /* background-color: #f8f8fa; /* Tu color de fondo para la sección */
+  /* background-color: #f8f8fa; */
 }
 
 /* Estilos para el título de la sección */
-#testimonials .section-title h2 {
-    font-size: 32px;
-    font-weight: bold;
-    text-align: center;
+#info .section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+    margin-bottom: -300px;
 }
-#testimonials .section-title h2::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 2px;
-    background-color: var(--accent-color, #4CAF50);
-    margin: 0px auto 0;
+#info .section-title h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 2px;
+  background-color: var(--accent-color, #4CAF50);
+    margin-bottom: -0px;
 }
 
 /* Contenedores de Swiper */
-.testimonials .testimonials-carousel,
-.testimonials .testimonials-slider {
-  overflow: hidden;
-}
-.testimonials .swiper-wrapper {
+.info .swiper-wrapper {
   height: auto;
 }
 
 /* Estilos para CADA SLIDE del carrusel */
-#testimonials .testimonial-item {
-  width: 350px;
+#info .info-item {
+  width: 90%; /* Swiper se encargará del ancho del slide */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: center; /* Centra horizontalmente los elementos hijos */
+  text-align: center; /* Centra el texto dentro del .info-item */
 }
 
-/* --- AJUSTE CLAVE: Estilos para la IMAGEN PRINCIPAL (usando .testimonial-img) --- */
-#testimonials .testimonial-item .testimonial-img { /* ¡Cambiado a .testimonial-img! */
+/* Estilos para la IMAGEN PRINCIPAL */
+#info .info-item .info-img {
   display: block;
-  width: 180px;            /* Tamaño de la imagen para el óvalo/círculo */
-  height: 180px;
-    margin-top: -10px;/* Para que sea un círculo con border-radius: 50% */
-    align-items: center
+  max-width: 250px; /* Tamaño máximo para la imagen en desktop */
+  height: auto;
+  object-fit: contain;
+  margin-top: -50px;
+  margin-bottom: 15px;
 }
 
 /* Estilos para el TÍTULO (h3) y SUBTÍTULO (h4) dentro del slide */
-#testimonials .testimonial-item h3 {
-  font-size: 23px;
+#info .info-item h3 {
+  font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
+  color: #333;
 }
-    
-#testimonials .testimonial-item h4 {
+
+#info .info-item h4 {
   font-size: 18px;
-  color: #ffffff;
-  padding-top: -10px;
+  color: #555;
+  margin-top: -5px;
   margin-bottom: 0px;
 }
 
 /* Estilos para la PAGINACIÓN del carrusel (los puntos de navegación) */
-#testimonials .swiper-pagination {
-  margin-top: 20px; /* Bajar los puntos de navegación */
+#info .swiper-pagination {
+  margin-top: 0px;
   position: relative;
 }
-    
-#testimonials .swiper-pagination .swiper-pagination-bullet {
+
+#info .swiper-pagination .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
-  background-color: var(--background-color);
+  background-color: var(--background-color, #eee);
   opacity: 1;
-  border: 1px solid var(--accent-color);
-  padding-top: 0px;
-    align-items: center
-}
-#testimonials .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color, #4CAF50);
 }
 
-/* --- ESTILOS MÓVILES (Mobile Styles) --- */
-@media (max-width: 400px) {
+#info .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--accent-color, #4CAF50);
+}
+
+
+/* --- ESTILOS ESPECÍFICOS PARA EL CARRUSEL EN MOBILE --- */
+/* Media query para pantallas más pequeñas (móvil y tablets pequeñas) */
+@media (max-width: 768px) {
+  /* Bajar el Swiper completo en mobile */
+  #info .init-swiper {
+    margin-top: -20px; /* Ajusta este valor para bajar el carrusel en móvil */
+  }
+
+  /* Estilos para CADA SLIDE en móvil */
+  #info .info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente la imagen y los textos */
+    text-align: center; /* Centra el texto */
+    padding: 10px;
+  }
 
   /* Ajustes para la IMAGEN PRINCIPAL en móvil */
-  #testimonials .testimonial-item .testimonial-img { /* ¡Cambiado a .testimonial-img! */
-    width: 100%;
-    height: 100%;
-      align-items: center;
-          margin
+  #info .info-item .info-img {
+    width: 300px; /* Tamaño más pequeño para la imagen en móvil */
+    height: 200px;
+    margin: 5px; /* Centra la imagen y añade margen inferior */
   }
 
   /* Ajustes para el TEXTO en móvil */
-  #testimonials .testimonial-item h3 {
-    font-size: 17px;
-      color:#7096a3;
-      text-align: center;
+  #info .info-item h3 {
+    font-size: 18px;
+    color: #7096a3;
+    text-align: center;
+    margin-bottom: 5px;
+      margin-top: -30px;
   }
-  #testimonials .testimonial-item h4 {
+  #info .info-item h4 {
     font-size: 12px;
-      margin-left: 1px;
-      margin-bottom: 8px;
-      text-align: center;
+    margin-left: 0;
+    margin-bottom: 8px;
+    text-align: center;
   }
 
   /* Ajuste del margen de la paginación en móvil */
-  #testimonials .swiper-pagination {
-      align-items: center;
-      margin-left: -10px;
+  #info .swiper-pagination {
+    margin-top: 25px;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
   }
 }
-    
+
+/* Si tu breakpoint de móvil es más específico para teléfonos muy pequeños, ajusta aquí */
+@media (max-width: 360px) {
+  /* Puedes añadir ajustes específicos para teléfonos muy pequeños aquí si es necesario */
+}
 /*-    
 # Portfolio Section
 --------------------------------------------------------------*/
-.portfolio .portfolio-filters {
-  padding: 0 0 20px 0;
-  margin: 0 auto;
-  list-style: none;
-  text-align: center;
-}
+  .banner {
+  width: 100%; min-height: 100vh; position: relative; display: flex; align-items: center; /* Usamos la imagen que mencionaste en el HTML */ background: url("../img/1x/fondo-20.png") center; background-size: cover; margin-bottom: -40px; }
+}  
+@media (max-width: 360px) {
+    /* Estilos generales para el contenedor de la sección */
+    #banner .container {
+        padding: 20px; /* Un poco de padding para que no se pegue a los bordes */
+    }
 
-.portfolio .portfolio-filters li {
-  cursor: pointer;
-  display: inline-block;
-  padding: 0;
-  font-size: 18px;
-  font-weight: 500;
-  margin: 0 10px;
-  line-height: 1;
-  transition: all 0.3s ease-in-out;
-}
+    /* Ajustes para las columnas en pantallas pequeñas */
+    #banner .row {
+        flex-direction: column; /* Apila las columnas verticalmente */
+        text-align: center; /* Centra el texto */
+    }
 
-.portfolio .portfolio-filters li:hover,
-.portfolio .portfolio-filters li.filter-active {
-  color: var(--accent-color);
-}
+    #banner .col-lg-6 {
+        width: 100%; /* Las columnas ocupan todo el ancho disponible */
+    }
 
-.portfolio .portfolio-filters li:first-child {
-  margin-left: 0;
-}
+    /* Orden de los elementos: imagen primero, luego texto */
+    #banner .order-1.order-lg-2 { /* Esta es la columna de la imagen */
+        order: 1;
+        margin-bottom: 20px; /* Espacio entre la imagen y el texto */
+    }
 
-.portfolio .portfolio-filters li:last-child {
-  margin-right: 0;
-}
+    #banner .order-2.order-lg-1 { /* Esta es la columna del texto */
+        order: 2;
+    }
 
-@media (max-width: 575px) {
-  .portfolio .portfolio-filters li {
-    font-size: 14px;
-    margin: 0 5px;
-  }
-}
+    /* Estilos para el título principal */
+    #banner h1 {
+        font-size: 28px; /* Reduce el tamaño de la fuente para que quepa mejor */
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
 
-.portfolio .portfolio-content {
-  background-color: var(--surface-color);
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-  height: 100%;
-  overflow: hidden;
-}
+    /* Estilos para el párrafo descriptivo */
+    #banner p {
+        font-size: 16px; /* Ajusta el tamaño del párrafo */
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
 
-.portfolio .portfolio-content img {
-  transition: 0.3s;
-  position: relative;
-  z-index: 1;
-}
+    /* Asegura que la imagen sea responsiva y no se desborde */
+    #banner .hero-img img {
+        width: 100%;
+        height: auto;
+        max-width: 280px; /* Limita el ancho máximo de la imagen si es muy grande */
+        display: block; /* Para centrar la imagen */
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-.portfolio .portfolio-content .portfolio-info {
-  background-color: var(--background-color);
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  padding: 25px 20px;
-  position: relative;
-  z-index: 2;
+    /* Si hay botones o elementos dentro de .d-flex, asegúrate de que se centren */
+    #banner .d-flex {
+        justify-content: center; /* Centra el contenido si lo hay */
+    }
 }
-
-.portfolio .portfolio-content .portfolio-info h4 {
-  font-size: 18px;
-  font-weight: 600;
-  padding-right: 50px;
-}
-
-.portfolio .portfolio-content .portfolio-info h4 a {
-  color: var(--heading-color);
-  transition: 0.3s;
-}
-
-.portfolio .portfolio-content .portfolio-info h4 a:hover {
-  color: var(--accent-color);
-}
-
-.portfolio .portfolio-content .portfolio-info p {
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  font-size: 14px;
-  margin-bottom: 0;
-  padding-right: 50px;
-}
-
 
 /*--------------------------------------------------------------
 # Pricing Section

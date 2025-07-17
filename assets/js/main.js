@@ -6,6 +6,14 @@
 * License: https://bootstrapmade.com/license/
 */
 
+/**
+* Template Name: Techie
+* Template URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
+* Updated: Aug 07 2024 with Bootstrap v5.3.3
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
 (function() {
   "use strict";
 
@@ -215,4 +223,96 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
-})();
+  // --- INICIO DEL CÓDIGO DEL CARRUSEL (Pega aquí el código que te di anteriormente) ---
+  // Pégalo justo antes del cierre de la IIFE `})();`
+  // Puedes poner un comentario para saber dónde empieza y termina.
+
+  // Es buena práctica envolver el código del carrusel en su propio DOMContentLoaded
+  // o dentro de un 'load' listener si tu página es muy compleja y hay scripts que cargan tarde.
+  // Dado que este template ya usa 'window.addEventListener("load", ...)' para varias cosas,
+  // y para asegurar que todos los elementos HTML estén disponibles, usar 'load' aquí también es seguro.
+
+  window.addEventListener('load', () => {
+    // 1. Seleccionar los elementos clave del carrusel
+    const iconoScroll = document.querySelector('.icono-scroll');
+    const iconos = Array.from(document.querySelectorAll('.icono-scroll .icono'));
+    const iconoDotsContainer = document.querySelector('.icono-dots');
+    const dots = Array.from(document.querySelectorAll('.icono-dots .dot'));
+
+    // Si no encontramos los elementos, salimos (para evitar errores)
+    if (!iconoScroll || iconos.length === 0 || !iconoDotsContainer || dots.length === 0) {
+        console.warn("Algunos elementos del carrusel no se encontraron. El script del carrusel no se ejecutará.");
+        return; // Salir si no se encuentran los elementos necesarios para el carrusel
+    }
+
+    // 2. Función para actualizar el punto activo
+    const updateActiveDot = () => {
+        const scrollLeft = iconoScroll.scrollLeft;
+        const scrollWidth = iconoScroll.clientWidth;
+
+        let currentActiveIndex = 0;
+        let minDistance = Infinity;
+
+        iconos.forEach((icono, index) => {
+            const iconoCenter = icono.offsetLeft + icono.offsetWidth / 2;
+            const viewportCenter = scrollLeft + scrollWidth / 2;
+            const distance = Math.abs(iconoCenter - viewportCenter);
+
+            if (distance < minDistance) {
+                minDistance = distance;
+                currentActiveIndex = index;
+            }
+        });
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[currentActiveIndex]) {
+            dots[currentActiveIndex].classList.add('active');
+        }
+    };
+
+    // 3. Función para manejar el clic en los puntos de navegación
+    const handleDotClick = (event) => {
+        const clickedDot = event.target;
+        if (clickedDot.classList.contains('dot')) {
+            const dotIndex = dots.indexOf(clickedDot);
+            if (dotIndex > -1 && iconos[dotIndex]) {
+                const targetIcono = iconos[dotIndex];
+                iconoScroll.scrollTo({
+                    left: targetIcono.offsetLeft - (iconoScroll.clientWidth / 2) + (targetIcono.offsetWidth / 2),
+                    behavior: 'smooth'
+                });
+            }
+        }
+    };
+
+    // 4. Lógica para activar/desactivar el carrusel y los puntos basado en el tamaño de la pantalla
+    const mediaQuery = window.matchMedia('(max-width: 768px)'); // Nuestro breakpoint para móvil
+
+    const handleMediaQueryChange = (e) => {
+        if (e.matches) {
+            // Si la pantalla es móvil (<= 768px):
+            // Añadimos los event listeners
+            iconoScroll.addEventListener('scroll', updateActiveDot);
+            iconoDotsContainer.addEventListener('click', handleDotClick);
+            updateActiveDot(); // Llamamos una vez para asegurar que el punto inicial esté activo
+        } else {
+            // Si no es móvil (> 768px):
+            // Removemos los event listeners para que no haya comportamiento de carrusel en desktop
+            iconoScroll.removeEventListener('scroll', updateActiveDot);
+            iconoDotsContainer.removeEventListener('click', handleDotClick);
+            iconoScroll.scrollTo({ left: 0, behavior: 'instant' }); // Aseguramos que no haya scroll forzado
+            dots.forEach(dot => dot.classList.remove('active')); // Desactivar puntos
+        }
+    };
+
+    // 5. Ejecutar la lógica una vez al cargar la página (para el estado inicial)
+    handleMediaQueryChange(mediaQuery);
+
+    // 6. Añadir un listener para cuando el tamaño de la pantalla cambie
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
+
+  }); // Cierre del window.addEventListener('load', ...) para el carrusel
+
+  // --- FIN DEL CÓDIGO DEL CARRUSEL ---
+
+})(); // Cierre de la IIFE de BootstrapMade
