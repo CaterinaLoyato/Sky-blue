@@ -27,9 +27,308 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/a75fa5e78c.js" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+
+    <style>
+    
+        
+        .icono-section {
+            padding: 60px 0;
+            background-color: var(--background-color, #f8f8f8);
+        }
+
+        .icono-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 10px;
+            margin-left: 50px;
+            font-size: 2.1em;
+            color: var(--heading-color, #333);
+        }
+
+        .icono-scroll {
+            display: grid; /* Importante: sin !important aquí para empezar */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            justify-content: center;
+            overflow-x: visible;
+            scroll-snap-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .icono {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .icono img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .icono p {
+            margin-bottom: 5px;
+            font-size: 1em;
+            line-height: 1.4;
+            color: #555;
+        }
+
+        .icono p strong {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .icono-dots {
+            display: none;
+        }
+
+
+        /* --- ESTILOS ESPECÍFICOS PARA EL CARRUSEL EN MOBILE --- */
+        @media (max-width: 768px) {
+            .icono-scroll {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: scroll;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                padding: 0 20px;
+                gap: 0;
+                margin-left: 0;
+                margin-right: 0;
+                scroll-behavior: smooth;
+            }
+
+            .icono {
+                flex-shrink: 0;
+                width: 90vw;
+                scroll-snap-align: center;
+                margin-right: 20px;
+                height: auto;
+                padding: 15px;
+            }
+
+            .icono img {
+                width: 70px;
+                height: 70px;
+                object-fit: contain;
+                margin-bottom: 15px;
+            }
+
+            .icono:last-child {
+                margin-right: calc(50vw - (90vw / 2) + 20px);
+            }
+
+            .icono-dots {
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+                margin-top: 25px;
+            }
+
+            .icono-dots .dot {
+                width: 10px;
+                height: 10px;
+                background-color: rgba(0, 0, 0, 0.2);
+                border-radius: 50%;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .icono-dots .dot.active {
+                background-color: var(--accent-color, #007bff);
+            }
+        }
+    </style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Página</title>
+
+    <link rel="stylesheet" href="path/to/your/style.css">
+
+    <style>
+    
+        /* Estilos para la PAGINACIÓN del carrusel (los puntos de navegación) */
+        #info .swiper-pagination {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #info .swiper-pagination .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background-color: var(--background-color, #eee);
+            opacity: 1;
+            border: 1px solid var(--accent-color, #4CAF50);
+        }
+
+        #info .swiper-pagination .swiper-pagination-bullet-active {
+            background-color: var(--accent-color, #4CAF50);
+        }
+
+        /* Bajar el Swiper completo en desktop y mobile (aplicar a ambos) */
+        #info .init-swiper {
+            margin-top: 50px !important; /* AUMENTADO PARA ASEGURAR QUE SE NOTE */
+        }
+
+    </style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner de Patinaje</title>
+    <style>
+        /* Estilos generales para el banner */
+     .banner {
+    width: 100%;
+    min-height: 80vh; /* Asegura que el banner ocupe al menos toda la altura de la ventana */
+    position: relative; /* Esencial para el z-index y el posicionamiento de elementos hijos */
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente si el "row" no ocupa todo el ancho */
+
+    /* IMAGEN DE FONDO POR DEFECTO (ESCRITORIO) */
+    /* ¡MUY IMPORTANTE! Asegúrate que la ruta de la imagen sea correcta desde donde está tu HTML */
+    background: url("assets/img/Sin%20t%C3%ADtulo-2.png") center center no-repeat;
+    background-size: cover; /* La imagen cubrirá todo el espacio disponible */
+    background-attachment: fixed; /* Opcional: la imagen de fondo se mantiene fija al hacer scroll */
+    margin-bottom: -60px; /* Mantienes tu margen si es intencional */
+}
+
+/* Ocultamos las imágenes IMG que están directamente en el HTML porque las usamos como fondo del .banner */
+/* Si solo quieres que el texto esté sobre el fondo, estas imágenes deben estar ocultas */
+.banner .hero-img {
+    display: none; /* Esto oculta completamente el div .hero-img */
+}
+
+/* Si tuvieras otras imágenes en .hero-img que quieres mostrar en responsive como elementos,
+   tendrías que manejarlas de forma diferente, por ejemplo:
+   .banner .hero-img .desk { display: none; }
+   .banner .hero-img .mobile { display: none; }
+   Y luego en la media query:
+   @media (max-width: 360px) {
+       .banner .hero-img { display: block; } // Muestra el contenedor
+       .banner .hero-img .desk { display: none; }
+       .banner .hero-img .mobile { display: block; width: 100%; height: auto; }
+       .banner { background-image: none; } // Quita el fondo CSS
+   }
+   Pero basándonos en tu petición de "cambiar la img de fondo", la solución actual es la correcta.
+*/
+
+
+/* Aseguramos que el contenedor del texto esté por encima de la imagen de fondo */
+.banner .container {
+    position: relative;
+    z-index: 2; /* Mayor que 1 para asegurar que esté por encima de cualquier otro elemento de fondo */
+    padding: 20px; /* Un padding para que el texto no quede pegado a los bordes */
+}
+
+/* Estilos para el título principal */
+.banner h1 {
+    font-size: 4rem; /* Tamaño de fuente más grande para el título principal */
+    color: #ffffff; /* Color de texto blanco para que resalte sobre la imagen oscura (ajusta según tu imagen) */
+    text-align: end; /* Alinea el texto a la derecha. Si quieres centrar, usa "center" */
+    margin-bottom: 0; /* Elimina margen inferior si no hay párrafo debajo */
+    line-height: 1.2;
+}
+
+/* Estilos para el contenedor de la columna del texto */
+/* Ajustado de col-lg-6 a col-lg-12 según tu HTML */
+.banner .col-lg-12.order-2.order-lg-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente dentro de la columna */
+    align-items: flex-end; /* Alinea el contenido a la derecha para que coincida con text-align: end; */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+
+/* MEDIA QUERY para pantallas pequeñas (360px de ancho máximo) */
+@media (max-width: 360px) {
+    .banner {
+        min-height: 80vh; /* Ajusta la altura mínima para pantallas pequeñas si es necesario */
+        /* IMAGEN DE FONDO PARA MÓVIL - AQUÍ SE CAMBIA */
+        /* ¡IMPORTANTE! Asegúrate que la ruta de la imagen "mobile-41.png" sea correcta */
+        background-image: url("assets/img/mobile-41.png"); /* Sobrescribe la imagen de fondo */
+        background-attachment: scroll; /* Opcional: quita el fixed para móvil si el efecto es molesto */
+    }
+
+    .banner .container {
+        padding: 15px; /* Un poco menos de padding para pantallas muy pequeñas */
+    }
+
+    .banner h1 {
+        font-size: 3rem; /* Reduce el tamaño de la fuente para que quepa mejor */
+        padding: 0 20px;
+        margin-top: 200px;
+        text-align: center; /* Centra el texto en móvil para mejor legibilidad */
+    }
+
+    /* Ajuste para la columna del texto en móvil */
+    .banner .col-lg-12.order-2.order-lg-1 {
+        width: 100%;
+        align-items: center; /* Centra el contenido en móvil */
+        order: 1; /* Asegura que el texto aparezca primero */
+    }
+}
+    </style>
+    <style> /* --- ESTILOS GENERALES (POR DEFECTO PARA ESCRITORIO Y TABLETS) --- */
+/* ... Tus estilos existentes para .banner, h1, etc. ... */
+
+/* Estilos para el botón de flecha */
+.scroll-down-btn {
+    position: absolute; /* Opcional: si quieres posicionarlo absolutamente en el banner */
+    bottom: 30px; /* Distancia desde la parte inferior del banner */
+    left: 50%;
+    transform: translateX(-50%); /* Centra el botón horizontalmente */
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+    margin-left: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Ancho del botón */
+    height: 50px; /* Alto del botón */
+    border-radius: 50%; /* Lo hace circular */
+    background-color: rgba(111, 89, 158, 0); /* Fondo semitransparente */
+    border: 2px solid #9a83cc; /* Borde blanco semitransparente */
+    color: #9F90C1; /* Color de la flecha */
+    font-size: 24px; /* Tamaño de la flecha */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+.scroll-down-btn:hover {
+    background-color: #6F599E; /* Fondo más visible al pasar el ratón */
+    transform: translateX(-50%) translateY(5px); /* Pequeño efecto de "rebote" */
+}
+
+/* Ajustes para el botón de flecha en responsive (si es necesario) */
+@media (max-width: 360px) {
+    .scroll-down-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        bottom: 20px; /* Ajusta la posición en pantallas pequeñas */
+    }
+}</style>
 
   <!-- =======================================================
   * Template Name: Techie
@@ -52,19 +351,17 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="active">Inicio</a></li>
-          <li><a href="#about">Intro</a></li>
-          <li><a href="#services">Caracteristicás</a></li>
-          <li><a href="#pricing">Materialidad</a></li>
-          <li><a href="#team">Detalles</a></li>
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#features">Detalles</a></li>
+          <li><a href="#portfolio">Zoom</a></li>
           <li class="dropdown"><a href="#"><span>Galeria</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">Inspo</a></li>
-              <li><a href="#">Unboxing</a></li>
-              <li><a href="#">Como usar</a></li>
-              <li><a href="#">Videos</a></li>
+              <li><a href="https://pin.it/6421YOHJQ" target="_blank" rel="noopener noreferrer">Inspo</a></li>
+              <li><a href="https://www.tiktok.com/@impalaskate/video/6995696836610657538"target="_blank"  rel="noopener noreferrer">Unboxing</a></li>
+              <li><a href="https://www.tiktok.com/@impalaskate/video/7002113702740741377?is_from_webapp=1&sender_device=pc&web_id=7410130432745047557"target="_blank"  rel="noopener noreferrer">Videos</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Contacto</a></li>
+          <li><a href="#footer">Contacto</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -83,116 +380,82 @@
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 d-flex align-items-end hero-img">
-            <img src="assets/img/cartel-16-16.png" class="img-fluid animated" alt="">
+            <img src="assets/img/cool-15-15.png" class="img-fluid animated" alt="">
+              <div class="d-flex justify-content-center"> <a href="#intro" id="scrollDownBtn" class="scroll-down-btn">
+                        <i class="bi bi-chevron-down"></i> </a>
+                </div>
           </div>
-        </div>
+          </div>
     </section><!-- /Hero Section -->
+      
+          <!-- intro Section -->
+<section id="intro" class="intro">
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div style="background-color: #9EBBAE">
       <div class="container">
         <div class="row gy-4">
-          <div class="col-lg-7 order-1 order-lg-2 justify-content-end" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/fot/abt.png" class="img-fluid" alt="">
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+              <h1><strong>Un clásico que vuelve con todo</strong> </h1>
+            <p>Los Sky Blue reinventan el patinaje de los 70s con un estilo pop, materiales sostenibles y toques modernos.</p>
+            <div class="d-flex">
+            </div>
           </div>
-          <div class="col-lg-5 order-2 order-lg-1  d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
-            <h3>Un clásico que vuelve con todo</h3>
-            <p class="fst-italic">
-       Los Impala Quad Skate son una oda al patinaje de los 70s, reinventados con una estética pop, materiales conscientes y detalles que marcan tendencia.
-            </p>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img">
+            <img src="assets/img/abt-10-10.png" class="img-fluid animated" alt="">
           </div>
         </div>
       </div>
-        </div>
     </section>
+     <!-- intro Section -->
       
-     <!-- /About Section --> 
-      
-    <!-- Services Section -->
-    <section id="services" class="services section">
+       <!-- icono Section -->
+   <section class="todo">
+  <div class="container">
+    <h2><strong>Caracteristicás</strong></h2>
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Caracteristicás</h2>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-xl-4 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"> <img src="assets/img/1x/icono%20(3).png" alt="Icono Normal" class="icon-normal"></div>
-              <div>
-                <h4 class="title"><a href="#" class="stretched-link">Bota acolchada</a></h4>
-                <p class="description">Mayor comodidad para patinar por horas.</p>
-              </div>
-            </div>
-          </div>
-          <!-- End Service Item -->
-
-          <div class="col-xl-4 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0">
-                   <img src="assets/img/icono-06.png" alt="Icono Normal" class="icon-normal"></div>
-              <div>
-                <h4 class="title"><a href="#" class="stretched-link">Ruedas de 58 mm (82A)</a></h4>
-                <p class="description">Suaves y versátiles, ideales para exteriores.</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-4 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0">
-                   <img src="assets/img/icono-08.png" alt="Icono Normal" class="icon-normal">
-    </div>
-              <div>
-                <h4 class="title"><a href="#" class="stretched-link">Chasis de aluminio</a></h4>
-                <p class="description">Base firme y duradera sin perder ligereza.</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-4 col-lg-4" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"> <img src="assets/img/icono-30.png" alt="Icono Normal" class="icon-normal">
-    </div>
-              <div>
-                <h4 class="title"><a href="#" class="stretched-link">Rodamientos ABEC-7</a></h4>
-                <p class="description">Deslizamiento suave y controlado.</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-4 col-lg-4" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"> <img src="assets/img/icono-31.png" alt="Icono Normal" class="icon-normal">
+    <div class="icono-scroll">
+      <div class="icono">
+        <img src="assets/img/icono-56.png" alt="Rodamientos ABEC-7">
+        <p><strong>Rodamientos ABEC-7</strong></p>
+        <p>Deslizamiento suave y controlado.</p>
       </div>
-              <div>
-                <h4 class="title"><a href="#" class="stretched-link">Freno delantero desmontable</a></h4>
-                <p class="description">Práctico y reemplazable, ideal para principiantes.</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-4 col-lg-4" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"> <img src="assets/img/icono-32.png" alt="Icono Normal" class="icon-normal">
-            </div>
-              <div>
-                <h4 class="title"><a href="#" class="stretched-link">Diseño vegano</a></h4>
-                <p class="description">Sin materiales de origen animal, certificado por PETA.</p>
-              </div>
-            </div>
-          </div><!-- End Service Item -->
-
-        </div>
-
+      <div class="icono">
+        <img src="assets/img/icono-54.png" alt="Freno delantero desmontable">
+        <p><strong>Freno delantero desmontable</strong></p>
+        <p>Práctico y reemplazable, ideal para principiantes.</p>
       </div>
-
-    </section><!-- /Services Section -->
+      <div class="icono">
+        <img src="assets/img/icono-07.png" alt="Chasis de aluminio">
+        <p><strong>Chasis de aluminio</strong></p>
+        <p>Base firme y duradera sin perder ligereza.</p>
+      </div>
+      <div class="icono">
+        <img src="assets/img/icono-57.png" alt="Ruedas de 58mm (82A)">
+        <p><strong>Ruedas de 58 mm (82A)</strong></p>
+        <p>Suaves y versátiles, ideales para exteriores.</p>
+      </div>
+      <div class="icono">
+        <img src="assets/img/icono-55.png" alt="Diseño vegano">
+        <p><strong>Diseño vegano</strong></p>
+        <p>Sin materiales de origen animal, certificado por PETA.</p>
+      </div>
+      <div class="icono">
+        <img src="assets/img/icono-04.png" alt="Bota acolchada">
+        <p><strong>Bota acolchada</strong></p>
+        <p>Mayor comodidad para patinar por horas.</p>
+      </div>
+    </div>
+    <div class="icono-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</section>
+ 
+      <!-- /caracteristicas Section -->
 
     <!-- Features Section -->
     <section id="features" class="features section">
@@ -205,11 +468,11 @@
       <div class="container">
 
         <div class="row gy-4 justify-content-between">
-          <div class="features-image col-lg-5 order-lg-2 d-flex align-items-center" data-aos="fade-up" data-aos-delay="100"><img src="assets/img/fotodest-11-11.png" class="img-fluid" alt=""></div>
+          <div class="features-image col-lg-5 order-lg-2 d-flex align-items-center" data-aos="fade-up" data-aos-delay="100"><img src="assets/img/dd-58.png" class="img-fluid" alt=""></div>
           <div class="col-lg-6 d-flex flex-column justify-content-center">
 
             <div class="features-item d-flex mt-3 ps-0 ps-lg-3 pt-1" data-aos="fade-up" data-aos-delay="200">
-             <img src="assets/img/detalles-37.png" class="detalle" alt="">
+             <img src="assets/img/1x/Mesa%20de%20trabajo%2047.png" class="detalle" alt="">
               <div class="parrafo">
             <h4>Color Sky Blue/Yellow</h4>
               <p>Vibrante y suave</p></div>
@@ -217,7 +480,7 @@
             <!-- End Features Item-->
 
             <div class="features-item d-flex mt-3 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="300">
-                      <img src="assets/img/detalles-38.png" class="detalle" alt="">
+                      <img src="assets/img/1x/Mesa%20de%20trabajo%2047_1.png" class="detalle" alt="">
               <div class="parrafo">
                 <h4>Cordones a tono</h4>
             <p>Ajuste perfecto</p></div>
@@ -225,7 +488,7 @@
     <!-- End Features Item-->
 
             <div class="features-item d-flex mt-3 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="400">
-                   <img src="assets/img/detalles-39.png" class="detalle" alt="">
+                   <img src="assets/img/1x/Mesa%20de%20trabajo%2047_2.png" class="detalle" alt="">
               <div class="parrafo">
                 <h4>Interior acolchado</h4>
                   <p> Comodidad asegurada</p></div>
@@ -233,7 +496,7 @@
             <!-- End Features Item-->
 
             <div class="features-item d-flex mt-3 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="500">
-                      <img src="assets/img/detalles-40.png" class="detalle" alt="">
+                      <img src="assets/img/1x/Mesa%20de%20trabajo%2047_3.png" class="detalle" alt="">
               <div class="parrafo">
                 <h4>Acabado brillante</h4>
                   <p>Estética retro pop</p></div>
@@ -248,201 +511,170 @@
     <section id="testimonials" class="testimonials section light-background">
 
       <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Información Útil</h2>
-    
-      </div><!-- End Section Title -->
+    <section id="info"> <div class="container section-title" data-aos="fade-up">
+    <h2>Información Útil</h2>
+  </div><div class="container" data-aos="fade-up" data-aos-delay="100">
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper" data-speed="600" data-delay="5000" data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 1,
-                  "spaceBetween": 40
-                },
-                "1200": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 20
-                }
-              }
+    <div class="swiper init-swiper" data-speed="600" data-delay="5000" data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 20 } }">
+      <script type="application/json" class="swiper-config">
+        {
+          "loop": true,
+          "speed": 600,
+          "autoplay": {
+            "delay": 5000
+          },
+          "slidesPerView": "auto",
+          "pagination": {
+            "el": ".swiper-pagination",
+            "type": "bullets",
+            "clickable": true
+          },
+          "breakpoints": {
+            "320": {
+              "slidesPerView": 1,
+              "spaceBetween": 40
+            },
+            "1200": {
+              "slidesPerView": 3,
+              "spaceBetween": 20
             }
-          </script>
-          <div class="swiper-wrapper">
+          }
+        }
+      </script>
+      <div class="swiper-wrapper">
 
-            <div class="swiper-slide">
-  <div class="testimonial-item">
-    <img src="assets/img/fot/info%20(3).png" class="testimonial-img" alt="">
-    <h3>Variedad de talles</h3>
-    <h4>Disponible del 35 al 42</h4>
-
-    </div>
-</div>
-              <!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/fot/info%20(2).png" class="testimonial-img" alt="">
-    <h3>Coleccion oficial</h3>
-    <h4>Accesorios extra</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-    <img src="assets/img/fot/info%20(1).png" class="testimonial-img" alt="">
-    <h3>Uso recreativo</h3>
-    <h4>Usuarios principiantes</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/fot/info%20(4).png" class="testimonial-img" alt="">
-                <h3>Inspiración</h3>
-                <h4>Pop y moderno.</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/fot/info%20(5).png" class="testimonial-img" alt="">
-                <h3>Comodidad</h3>
-                <h4>Confort en cada patinada.</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
+        <div class="swiper-slide">
+          <div class="info-item"> <img src="assets/img/1x/info-61.png" class="info-img" alt="">
+            <h3>Variedad de talles</h3>
+            <h4>Disponible del 35 al 42</h4>
           </div>
-          <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="info-item">
+            <img src="assets/img/1x/info-59.png" class="info-img" alt="">
+            <h3>Coleccion oficial</h3>
+            <h4>Accesorios extra</h4>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="info-item">
+            <img src="assets/img/1x/info-60.png" class="info-img" alt="">
+            <h3>Inspiración</h3>
+            <h4>Pop y moderno.</h4>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="info-item">
+            <img src="assets/img/1x/info-62.png" class="info-img" alt="">
+            <h3>Uso recreativo</h3>
+            <h4>Usuarios principiantes</h4>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="info-item">
+            <img src="assets/img/1x/info-63.png" class="info-img" alt="">
+            <h3>Comodidad</h3>
+            <h4>Confort en cada patinada.</h4>
+          </div>
         </div>
 
       </div>
+      <div class="swiper-pagination"></div>
+    </div>
 
-    </section><!-- /Testimonials Section -->
+  </div>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Materialidad</h2>
-      </div><!-- End Section Title -->
+</section><!-- /Testimonials Section -->
+<section id="parte2" class="parte2">
 
       <div class="container">
-
-        <div class="row gy-4 justify-content-center">
-
-          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-            <div class="pricing-item">
-            <img src="assets/img/1x/Mesa%20de%20trabajo%2056.png" class="pricing-img" alt="">
+        <div class="row gy-4">
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+              <h1><strong>Este modelo fue hecho para moverse… y para ser visto</strong> </h1>
+            <div class="d-flex">
             </div>
-          </div><!-- End Pricing Item -->
-            
-          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-            <div class="pricing-item">
-            <img src="assets/img/1x/Mesa%20de%20trabajo%2056_1.png" class="pricing-img" alt="">
-            </div>
-            </div>
-        <!-- End Pricing Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-            <div class="pricing-item">
-            <img src="assets/img/1x/Mesa%20de%20trabajo%2056_2.png" class="pricing-img" alt="">
-            </div>
-            </div>
-          </div><!-- End Pricing Item -->
-</div>
-    </section><!-- /Pricing Section -->
-
-       <section id="ancho">
-  <div class="ancho">
-       <img src="assets/img/ancho-53.png" class="img-desk" alt="">
-</section>
-      
-      
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img">
+            <img src="assets/img/22-10.png" class="img-fluid animated" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+   
 
     <!-- Team Section -->
-    <section id="team" class="team section">
+<section id="portfolio" class="portfolio section">
 
       <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
+      <div class="container section-title aos-init aos-animate" data-aos="fade-up">
         <h2>Visualiza tu Sky Blue</h2>
       </div><!-- End Section Title -->
 
       <div class="container">
 
-        <div class="row gy-4">
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="assets/img/vis-49.png" class="img-fluid" alt="">
-                <div class="social">
+          <div class="row gy-4 isotope-container aos-init aos-animate" data-aos="fade-up" data-aos-delay="200" style="position: relative; height: 1569.6px;">
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app" style="position: absolute; left: 0px; top: 0px;">
+              <div class="portfolio-content h-100">
+                <a href="assets/img/card-48.png" data-gallery="portfolio-gallery-app" class="glightbox"><img src="assets/img/card2-48.png" class="img-fluid" alt=""></a>
+                <div class="portfolio-info">
+                  <h4>Perfil</h4>
+               
                 </div>
               </div>
-              <div class="member-info">
-                <h4>Frontal</h4>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
+            </div><!-- End Portfolio Item -->
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="assets/img/vis-51.png" class="img-fluid" alt="">
-                <div class="social">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product" style="position: absolute; left: 380px; top: 0px;">
+              <div class="portfolio-content h-100">
+                <a href="assets/img/card-50.png" data-gallery="portfolio-gallery-app" class="glightbox"><img src="assets/img/card2-50.png" class="img-fluid" alt=""></a>
+                <div class="portfolio-info">
+                  <h4>Frontal</h4>
+                 
                 </div>
               </div>
-              <div class="member-info">
-                <h4>Perfil</h4>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
+            </div><!-- End Portfolio Item -->
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="assets/img/vis-50.png" class="img-fluid" alt="">
-                <div class="social">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding" style="position: absolute; left: 760px; top: 0px;">
+              <div class="portfolio-content h-100">
+                <a href="assets/img/card-49.png" data-gallery="portfolio-gallery-app" class="glightbox"><img src="assets/img/card2-49.png" class="img-fluid" alt=""></a>
+                <div class="portfolio-info">
+                  <h4>Trasera</h4>
+                  
                 </div>
               </div>
-              <div class="member-info">
-                <h4>Lateral Trasera</h4>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
+            </div><!-- End Portfolio Item -->
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
-            <div class="team-member">
-              <div class="member-img">
-                <img src="assets/img/vis-52.png" class="img-fluid" alt="">
-                <div class="social">
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Trasera</h4>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
+
+          </div><!-- End Portfolio Container -->
 
         </div>
 
       </div>
 
     </section><!-- /Team Section -->
+        <section id="banner" class="banner">
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-12 order-2 order-lg-1 d-flex flex-column justify-content-center">
+              <h1><strong>Volvé a patinar. Volvé a sentir.</strong> </h1>
+            <div class="d-flex">
+            </div>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img">
+            <img src="assets/img/Sin%20t%C3%ADtulo-2.png" class="desk" alt="desk">
+              <img src="assets/img/mobile-41.png" class="mobile" alt="mobile">
+          </div>
+        </div>
+      </div>
+    </section>
+   
 <!-- /Contact Section -->
 
   </main>
@@ -460,17 +692,15 @@
 
         <div class="col-lg-2 col-6 footer-links">
           <h4>ENLACES</h4>
-          <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Intro</a></li>
-            <li><a href="#">Caracteristicas</a></li>
-            <li><a href="#">Materialidad</a></li>
-            <li><a href="#">Detalles</a></li>
+          <ul> 
+              <li><a href="#hero" class="active">Inicio</a></li>
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#features">Detalles</a></li>
+          <li><a href="#portfolio">Zoom</a></li>
           </ul>
         </div>
-        </div>
 
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-end">
           <h4>Contacto</h4>
           <p>Palermo, Buenos Aires</p>
           <p>Argentina</p>
@@ -478,7 +708,6 @@
           <p><strong>Email:</strong> <span>loyatoc@gmail.com</span></p>
         </div>
 
-      </div>
 
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">Techie</strong> <span>All Rights Reserved</span></p>
@@ -490,7 +719,7 @@
         Designed by <a href="https://bootstrapmade.com/">Caterina Loyato</a>
       </div>
     </div>
-
+        </div>
   </footer>
 
   <!-- Scroll Top -->
