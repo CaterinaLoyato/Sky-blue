@@ -512,14 +512,14 @@ h6 {
 
 .footer .footer-about .logo span {
   color: var(--heading-color);
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 700;
   letter-spacing: 1px;
   font-family: var(--heading-font);
 }
 
 .footer .footer-about p {
-  font-size: 18px;
+  font-size: 15px;
   font-family: var(--heading-font);
 }
 
@@ -831,7 +831,7 @@ section,
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
 
-@media (max-width: 360px) {
+@media (max-width: 400px) {
   .hero {
     background-image: url("../img/R.jpeg");
     background-position: center;
@@ -1000,10 +1000,9 @@ section,
         overflow-x: scroll !important;
         scroll-snap-type: x mandatory !important;
         -webkit-overflow-scrolling: touch !important;
-        padding: 0 20px !important;
+        padding: px !important;
         gap: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+   
         scroll-behavior: smooth !important;
     }
 
@@ -1011,7 +1010,7 @@ section,
         flex-shrink: 0 !important;
         width: 90vw !important;
         scroll-snap-align: center !important;
-        margin-right: 20px !important;
+        margin-right: 10px !important;
         height: auto !important;
         padding: 15px !important;
     }
@@ -1024,13 +1023,13 @@ section,
     }
 
     .icono:last-child {
-        margin-right: calc(50vw - (90vw / 2) + 20px) !important;
+        margin-right: calc(-350vw - (350vw / 2)) !important;
     }
 
     .icono-dots {
         display: flex !important;
         justify-content: center !important;
-        gap: 8px !important;
+        gap: x !important;
         margin-top: 25px !important;
     }
 

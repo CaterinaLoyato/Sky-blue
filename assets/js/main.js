@@ -223,95 +223,122 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
-  // --- INICIO DEL CÓDIGO DEL CARRUSEL (Pega aquí el código que te di anteriormente) ---
-  // Pégalo justo antes del cierre de la IIFE `})();`
-  // Puedes poner un comentario para saber dónde empieza y termina.
+    document.addEventListener('DOMContentLoaded', function() {
+        const iconoScroll = document.querySelector('.icono-scroll');
+        const dotsContainer = document.querySelector('.icono-dots');
+        const iconos = document.querySelectorAll('.icono');
+        let dots = [];
 
-  // Es buena práctica envolver el código del carrusel en su propio DOMContentLoaded
-  // o dentro de un 'load' listener si tu página es muy compleja y hay scripts que cargan tarde.
-  // Dado que este template ya usa 'window.addEventListener("load", ...)' para varias cosas,
-  // y para asegurar que todos los elementos HTML estén disponibles, usar 'load' aquí también es seguro.
+        const mediaQuery = window.matchMedia('(max-width: 768px)');
 
-  window.addEventListener('load', () => {
-    // 1. Seleccionar los elementos clave del carrusel
-    const iconoScroll = document.querySelector('.icono-scroll');
-    const iconos = Array.from(document.querySelectorAll('.icono-scroll .icono'));
-    const iconoDotsContainer = document.querySelector('.icono-dots');
-    const dots = Array.from(document.querySelectorAll('.icono-dots .dot'));
+        function setupCarousel(mql) {
+            if (mql.matches) { // Si estamos en pantalla móvil (<= 768px)
+                // Crear los puntos si no existen o si han sido removidos
+                if (dots.length === 0 || dotsContainer.children.length === 0) {
+                    dotsContainer.innerHTML = ''; // Limpiar el contenedor de dots
+                    dots = []; // Vaciar el array de dots
 
-    // Si no encontramos los elementos, salimos (para evitar errores)
-    if (!iconoScroll || iconos.length === 0 || !iconoDotsContainer || dots.length === 0) {
-        console.warn("Algunos elementos del carrusel no se encontraron. El script del carrusel no se ejecutará.");
-        return; // Salir si no se encuentran los elementos necesarios para el carrusel
-    }
+                    iconos.forEach((_, index) => {
+                        const dot = document.createElement('span');
+                        dot.classList.add('dot');
+                        dot.dataset.index = index; // El índice del icono al que corresponde
+                        dotsContainer.appendChild(dot);
+                        dots.push(dot);
+                    });
+                }
 
-    // 2. Función para actualizar el punto activo
-    const updateActiveDot = () => {
-        const scrollLeft = iconoScroll.scrollLeft;
-        const scrollWidth = iconoScroll.clientWidth;
+                // Asegurar que el scroll esté al inicio al cargar en móvil SOLO SI NO HAY UN SCROLL PREVIO
+                // Para evitar que siempre salte al inicio si el usuario ya había deslizado
+                if (iconoScroll.scrollLeft === 0) {
+                    updateDots(); // Actualiza los dots al inicio
+                }
+                
+                // --- Función para actualizar el estado activo de los puntos ---
+                // Esta función necesita ser definida dentro del ámbito de setupCarousel
+                // o hacerse accesible para el removeEventListener.
+                // Usamos una función nombrada para facilitar el removeEventListener.
+                function updateDots() {
+                    if (iconos.length === 0 || dots.length === 0) return;
 
-        let currentActiveIndex = 0;
-        let minDistance = Infinity;
+                    // Obtener la posición de scroll actual
+                    const scrollLeft = iconoScroll.scrollLeft;
+                    const containerWidth = iconoScroll.offsetWidth;
 
-        iconos.forEach((icono, index) => {
-            const iconoCenter = icono.offsetLeft + icono.offsetWidth / 2;
-            const viewportCenter = scrollLeft + scrollWidth / 2;
-            const distance = Math.abs(iconoCenter - viewportCenter);
+                    let closestIconIndex = 0;
+                    let minDistance = Infinity;
 
-            if (distance < minDistance) {
-                minDistance = distance;
-                currentActiveIndex = index;
+                    // Iterar sobre cada icono para encontrar cuál está más centrado
+                    iconos.forEach((icono, index) => {
+                        const iconoRect = icono.getBoundingClientRect(); // Obtener la posición del icono relativa al viewport
+                        const iconoCenter = iconoRect.left + iconoRect.width / 2; // Centro del icono en el viewport
+
+                        // Centro del contenedor de scroll en el viewport
+                        const containerRect = iconoScroll.getBoundingClientRect();
+                        const containerCenter = containerRect.left + containerRect.width / 2;
+
+                        const distance = Math.abs(iconoCenter - containerCenter);
+
+                        if (distance < minDistance) {
+                            minDistance = distance;
+                            closestIconIndex = index;
+                        }
+                    });
+
+                    // Remover la clase 'active' de todos los dots
+                    dots.forEach(dot => dot.classList.remove('active'));
+
+                    // Añadir la clase 'active' al dot que corresponde al icono más cercano al centro
+                    if (dots[closestIconIndex]) {
+                        dots[closestIconIndex].classList.add('active');
+                    }
+                }
+
+                // --- Función para manejar el clic en los puntos ---
+                function handleDotClick(event) {
+                    if (event.target.classList.contains('dot')) {
+                        const indexToScrollTo = parseInt(event.target.dataset.index);
+                        const targetIcono = iconos[indexToScrollTo];
+
+                        if (targetIcono) {
+                            // Calcular la posición de scroll para centrar el icono deseado
+                            // Este cálculo tiene que ser preciso para el scroll-snap-align: center
+                            // La idea es que el centro del targetIcono se alinee con el centro del iconoScroll
+                            const targetIconoCenter = targetIcono.offsetLeft + (targetIcono.offsetWidth / 2);
+                            const scrollCenter = iconoScroll.offsetWidth / 2;
+                            const scrollLeftPosition = targetIconoCenter - scrollCenter;
+
+                            iconoScroll.scrollTo({
+                                left: scrollLeftPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                }
+
+                // Añadir los event listeners
+                iconoScroll.addEventListener('scroll', updateDots);
+                dotsContainer.addEventListener('click', handleDotClick);
+
+                // Llama a updateDots al cargar para asegurar que el dot inicial esté activo
+                updateDots();
+
+            } else { // Si estamos en pantalla de escritorio ( > 768px)
+                // Remover event listeners
+                iconoScroll.removeEventListener('scroll', updateDots);
+                dotsContainer.removeEventListener('click', handleDotClick);
+
+                // Remover los puntos del DOM para desktop
+                dots.forEach(dot => dot.remove());
+                dotsContainer.innerHTML = '';
+                dots = [];
             }
-        });
-
-        dots.forEach(dot => dot.classList.remove('active'));
-        if (dots[currentActiveIndex]) {
-            dots[currentActiveIndex].classList.add('active');
         }
-    };
 
-    // 3. Función para manejar el clic en los puntos de navegación
-    const handleDotClick = (event) => {
-        const clickedDot = event.target;
-        if (clickedDot.classList.contains('dot')) {
-            const dotIndex = dots.indexOf(clickedDot);
-            if (dotIndex > -1 && iconos[dotIndex]) {
-                const targetIcono = iconos[dotIndex];
-                iconoScroll.scrollTo({
-                    left: targetIcono.offsetLeft - (iconoScroll.clientWidth / 2) + (targetIcono.offsetWidth / 2),
-                    behavior: 'smooth'
-                });
-            }
-        }
-    };
+        // Inicializar y escuchar cambios en el media query
+        setupCarousel(mediaQuery);
+        mediaQuery.addEventListener('change', setupCarousel);
+    });
 
-    // 4. Lógica para activar/desactivar el carrusel y los puntos basado en el tamaño de la pantalla
-    const mediaQuery = window.matchMedia('(max-width: 768px)'); // Nuestro breakpoint para móvil
-
-    const handleMediaQueryChange = (e) => {
-        if (e.matches) {
-            // Si la pantalla es móvil (<= 768px):
-            // Añadimos los event listeners
-            iconoScroll.addEventListener('scroll', updateActiveDot);
-            iconoDotsContainer.addEventListener('click', handleDotClick);
-            updateActiveDot(); // Llamamos una vez para asegurar que el punto inicial esté activo
-        } else {
-            // Si no es móvil (> 768px):
-            // Removemos los event listeners para que no haya comportamiento de carrusel en desktop
-            iconoScroll.removeEventListener('scroll', updateActiveDot);
-            iconoDotsContainer.removeEventListener('click', handleDotClick);
-            iconoScroll.scrollTo({ left: 0, behavior: 'instant' }); // Aseguramos que no haya scroll forzado
-            dots.forEach(dot => dot.classList.remove('active')); // Desactivar puntos
-        }
-    };
-
-    // 5. Ejecutar la lógica una vez al cargar la página (para el estado inicial)
-    handleMediaQueryChange(mediaQuery);
-
-    // 6. Añadir un listener para cuando el tamaño de la pantalla cambie
-    mediaQuery.addEventListener('change', handleMediaQueryChange);
-
-  }); // Cierre del window.addEventListener('load', ...) para el carrusel
 
   // --- FIN DEL CÓDIGO DEL CARRUSEL ---
 

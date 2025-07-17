@@ -43,7 +43,7 @@
             text-align: center;
             margin-bottom: 30px;
             margin-top: 10px;
-            margin-left: 50px;
+            margin-left: 0px;
             font-size: 2.1em;
             color: var(--heading-color, #333);
         }
@@ -106,10 +106,8 @@
                 overflow-x: scroll;
                 scroll-snap-type: x mandatory;
                 -webkit-overflow-scrolling: touch;
-                padding: 0 20px;
+                padding: 0 0px;
                 gap: 0;
-                margin-left: 0;
-                margin-right: 0;
                 scroll-behavior: smooth;
             }
 
@@ -130,7 +128,7 @@
             }
 
             .icono:last-child {
-                margin-right: calc(50vw - (90vw / 2) + 20px);
+                margin-right: calc(50vw - (90vw / 2));
             }
 
             .icono-dots {
@@ -262,9 +260,9 @@
 
 
 /* MEDIA QUERY para pantallas pequeñas (360px de ancho máximo) */
-@media (max-width: 360px) {
+@media (max-width: 400px) {
     .banner {
-        min-height: 80vh; /* Ajusta la altura mínima para pantallas pequeñas si es necesario */
+        min-height: 70vh; /* Ajusta la altura mínima para pantallas pequeñas si es necesario */
         /* IMAGEN DE FONDO PARA MÓVIL - AQUÍ SE CAMBIA */
         /* ¡IMPORTANTE! Asegúrate que la ruta de la imagen "mobile-41.png" sea correcta */
         background-image: url("assets/img/mobile-41.png"); /* Sobrescribe la imagen de fondo */
@@ -354,7 +352,7 @@
           <li><a href="#intro">Intro</a></li>
           <li><a href="#features">Detalles</a></li>
           <li><a href="#portfolio">Zoom</a></li>
-          <li class="dropdown"><a href="#"><span>Galeria</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a><span>Galeria</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="https://pin.it/6421YOHJQ" target="_blank" rel="noopener noreferrer">Inspo</a></li>
               <li><a href="https://www.tiktok.com/@impalaskate/video/6995696836610657538"target="_blank"  rel="noopener noreferrer">Unboxing</a></li>
