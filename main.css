@@ -815,7 +815,7 @@ section,
 /* ========================================================= */
 
 /* Dispositivos con ancho máximo de 991px (Ej. Tablets y Móviles - todo lo que no es lg y superior) */
-@media (max-width: 991px) {
+@media (max-width: 400px) {
   .hero .hero-img {
     /* Posicionamiento y tamaño para TABLETS y MÓVILES */
     left: 50%;            /* Centra horizontalmente el cartel */
@@ -831,7 +831,7 @@ section,
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
 
-@media (max-width: 360px) {
+@media (max-width: 400px) {
   .hero {
     background-image: url("../img/R.jpeg");
     background-position: center;
