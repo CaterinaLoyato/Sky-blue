@@ -262,10 +262,11 @@
 /* MEDIA QUERY para pantallas pequeñas (360px de ancho máximo) */
 @media (max-width: 400px) {
     .banner {
-        min-height: 70vh; /* Ajusta la altura mínima para pantallas pequeñas si es necesario */
+        min-height: 50vh; /* Ajusta la altura mínima para pantallas pequeñas si es necesario */
         /* IMAGEN DE FONDO PARA MÓVIL - AQUÍ SE CAMBIA */
         /* ¡IMPORTANTE! Asegúrate que la ruta de la imagen "mobile-41.png" sea correcta */
-        background-image: url("assets/img/mobile-41.png"); /* Sobrescribe la imagen de fondo */
+        background-image: url("assets/img/mobile-41.png");
+        background-size:cover;/* Sobrescribe la imagen de fondo */
         background-attachment: scroll; /* Opcional: quita el fixed para móvil si el efecto es molesto */
     }
 
